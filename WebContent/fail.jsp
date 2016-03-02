@@ -7,9 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Hell world!</h1>
-	
-	<a href="login.jsp">登录</a>
-	
+	<h1>登录失败</h1>
 </body>
 </html>
