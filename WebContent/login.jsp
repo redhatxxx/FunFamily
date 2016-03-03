@@ -9,6 +9,7 @@
 		//获取信息
 		username = form.username.value;
 		password = form.password.value;
+		alert(username+password);
 		return true;
 	}
 </script>
