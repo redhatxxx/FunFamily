@@ -7,9 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
-	<!--
-		检查输入信息规则
-	-->
 	function isValidate(){
 		alert("test");
 		document.getElementbyId("rf").submit();
