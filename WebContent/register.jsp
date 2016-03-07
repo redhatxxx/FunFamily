@@ -6,21 +6,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript">
-	function isValidate(){
-		alert("test");
-		document.getElementbyId("rf").submit();
-	}
+<script type="text/javascript" src="jsfiles/checkinfo.js">
+	
 </script>
 </head>
 <body>
-	<form name="registerform" id="rf" action="register" method="post"
-			onsubmit="return isValidate(registerform)">
+	<form name="registerform" id="rf" action="register" method="post">
 			<table align="center">
 				<tr>
 					<td><label>用户名：</label></td>
 					<td><input type="text" name="username"></td>
-					<td><label>*</label></td>
+					<td><label id="userwarn">*</label></td>
 				</tr>
 				<tr>
 					<td><label>密码：</label></td>

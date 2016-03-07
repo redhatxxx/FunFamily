@@ -1,8 +1,6 @@
 package fun.servlet.login;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class RegisterServlet
+ * Servlet implementation class EditUserInfoServlet
  */
-@WebServlet("/RegisterServlet")
-public class RegisterServlet extends HttpServlet {
+@WebServlet("/EditUserInfoServlet")
+public class EditUserInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RegisterServlet() {
+    public EditUserInfoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,19 +27,7 @@ public class RegisterServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
-		String username = request.getParameter("username");
-		String password = request.getParameter("userpassword");
-		String email = request.getParameter("email");
-		String[] likes = request.getParameterValues("like");
-		String ares = request.getParameter("area");
-		String sex = request.getParameter("sex");
-		System.out.println(">>username:"+username+">>>>>>>password:"+password+">>>>>>email:"+email);
-		System.out.println(">>likes:"+likes.length+">>>>>>>ares:"+ares);
-		String forward = "success.jsp";
-		RequestDispatcher dispatcher = request.getRequestDispatcher(forward);
-		dispatcher.forward(request, response);
-		
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
