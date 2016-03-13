@@ -6,11 +6,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
+<script type="text/javascript">
+function setparam(){
+	document.getParameter().set("username","redhat");
+	
+}
+</script>
 <body>
 	<h1>Hell world!</h1>
 	
 	<a href="login.jsp">登录</a>
 	<a href="register.jsp">注册</a>
-	<a href="userpages/UserDetailInfo.jsp">test</a>
+	<a href="userpages/UserDetailInfo.jsp" onclik="setparam()">test</a>
+	<a href="userpages/outputinfo.jsp" onclik="setparam()">outputinfo</a>
 </body>
 </html>
