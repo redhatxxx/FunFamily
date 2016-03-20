@@ -1,6 +1,13 @@
 package fun.bean.login;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 public class UserBean {
+	
+	private String id;
 	
 	private String username;
 	
@@ -38,5 +45,13 @@ public class UserBean {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 }

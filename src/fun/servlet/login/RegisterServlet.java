@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fun.bean.login.UserBean;
+
 /**
  * Servlet implementation class RegisterServlet
  */
@@ -30,12 +32,17 @@ public class RegisterServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
+		UserBean user =new UserBean();
 		String username = request.getParameter("username");
 		String password = request.getParameter("userpassword");
 		String email = request.getParameter("email");
 		String[] likes = request.getParameterValues("like");
 		String ares = request.getParameter("area");
 		String sex = request.getParameter("sex");
+		user.setId("1223");
+		user.setUsername(username);
+		user.setPassword(password);
+		user.setEmail(email);
 		System.out.println(">>username:"+username+">>>>>>>password:"+password+">>>>>>email:"+email);
 		System.out.println(">>likes:"+likes.length+">>>>>>>ares:"+ares);
 		String forward = "success.jsp";
