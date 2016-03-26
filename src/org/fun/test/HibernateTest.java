@@ -21,7 +21,7 @@ public class HibernateTest {
 		bean.setPassword("U5F");
 		
 		ActivityBean activity = new ActivityBean();
-		activity.setActivityTitle("库不齐沙漠");
+		activity.setActivityTitle("库布齐沙漠");
 		activity.setActivLeader("东dong");
 		activity.setActivCreateDate(new Date());
 		Configuration cfg = new Configuration().addResource("hibernate.cfg.xml");
