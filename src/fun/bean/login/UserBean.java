@@ -5,9 +5,20 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="FUN_TMP_USER")
+@SequenceGenerator(name="usersquence",sequenceName="USER_ID_SEQUENCE",allocationSize=1)
 public class UserBean {
 	
-	private String id;
+	private long id;
 	
 	private String username;
 	
@@ -15,6 +26,7 @@ public class UserBean {
 
 	private String email;
 	
+	@Column(name="USER_NAME")
 	public String getUsername() {
 		return username;
 	}
@@ -23,6 +35,7 @@ public class UserBean {
 		this.username = username;
 	}
 
+	@Column(name="PASS_WORD")
 	public String getPassword() {
 		return password;
 	}
@@ -39,6 +52,7 @@ public class UserBean {
 			return false;
 	}
 
+	@Column(name="EMAIL")
 	public String getEmail() {
 		return email;
 	}
@@ -47,11 +61,14 @@ public class UserBean {
 		this.email = email;
 	}
 
-	public String getId() {
+	@Id
+	@Column(name="USER_ID")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="usersquence")
+	public long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 }

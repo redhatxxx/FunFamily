@@ -36,8 +36,10 @@ PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN"
 	
 	<property name="hibernate.jdbc.lob.non_contextual_creation">true</property>
 	
-    <!-- Drop and re-create the database schema on startup -->
-    <!-- <property name="hbm2ddl.auto">update</property> -->
-    <mapping resource="fun/bean/login/User.hbm.xml"/>
+    <!-- Drop and re-create the database schema on startup
+    <property name="hbm2ddl.auto">create</property> -->
+    
+    <mapping class="fun.bean.login.UserBean"/>
+    <mapping class="fun.bean.base.ActivityBean"/>
   </session-factory>
 </hibernate-configuration>
