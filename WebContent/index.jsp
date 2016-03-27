@@ -19,5 +19,6 @@ function setparam(){
 	<a href="register.jsp">注册</a>
 	<a href="userpages/UserDetailInfo.jsp" onclik="setparam()">test</a>
 	<a href="userpages/outputinfo.jsp" onclik="setparam()">outputinfo</a>
+	<a href="welcome.jsp">欢迎</a>
 </body>
 </html>
