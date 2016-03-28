@@ -30,12 +30,13 @@ public class HibernateTest {
 		// SessionFactory类似数据库库的一个Connection
 		SessionFactory sf = cfg.buildSessionFactory(sr);
 
-		Session session = sf.openSession();
+		Session session = sf.getCurrentSession();
+//		Session session = sf.openSession();
 		session.beginTransaction();
 		session.save(bean);
 		session.save(activity);
 		session.getTransaction().commit();
-		session.close();
+//		session.close();
 		sf.close();
 	}
 
