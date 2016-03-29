@@ -18,7 +18,7 @@ import javax.persistence.Table;
 @SequenceGenerator(name="usersquence",sequenceName="USER_ID_SEQUENCE",allocationSize=1)
 public class UserBean {
 	
-	private long id;
+	private int id;
 	
 	private String username;
 	
@@ -64,11 +64,11 @@ public class UserBean {
 	@Id
 	@Column(name="USER_ID")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="usersquence")
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 }
