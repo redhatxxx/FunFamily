@@ -1,17 +1,16 @@
 package fun.bean.login;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import fun.bean.base.LeaderCardBean;
 
 @Entity
 @Table(name="FUN_TMP_USER")
@@ -26,6 +25,28 @@ public class UserBean {
 
 	private String email;
 	
+	private LeaderCardBean leadcard;
+	
+	private String photograph;
+	
+	@Column(name="USER_PHOTOGRAPH")
+	public String getPhotograph() {
+		return photograph;
+	}
+
+	public void setPhotograph(String photograph) {
+		this.photograph = photograph;
+	}
+
+	@OneToOne(mappedBy="user")
+	public LeaderCardBean getLeadcard() {
+		return leadcard;
+	}
+
+	public void setLeadcard(LeaderCardBean leadcard) {
+		this.leadcard = leadcard;
+	}
+
 	@Column(name="USER_NAME")
 	public String getUsername() {
 		return username;

@@ -44,5 +44,6 @@ PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN"
     <mapping class="fun.bean.login.UserBean"/>
     <mapping class="fun.bean.base.ActivityBean"/>
     <mapping class="fun.bean.base.LeaderCardBean"/>
+    <mapping class="fun.bean.base.GroupBean"/>
   </session-factory>
 </hibernate-configuration>

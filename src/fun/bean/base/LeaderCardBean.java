@@ -27,6 +27,16 @@ public class LeaderCardBean {
 	
 	private UserBean user;
 	
+//	private GroupBean group;
+//	
+//	public GroupBean getGroup() {
+//		return group;
+//	}
+//
+//	public void setGroup(GroupBean group) {
+//		this.group = group;
+//	}
+
 	private Date createdate;
 
 	@Id

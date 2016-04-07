@@ -1,0 +1,4 @@
+1、表双向关联时一定使用 mappedBy=“与该class（A）关联class（B）中A的实例对象”
+2、OneToOne和ManyToOne中使用	@JoinColumn(name="该类所对应table的外键")
+3、ManyToOne双向或OneToMany单向时，get或load获取回的实例对象序列A，A在使用时会再一次调用sql如果不在
+瞬态会报错。（后续学习注意找解决方案）

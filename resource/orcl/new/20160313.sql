@@ -20,7 +20,8 @@ create table FUN_TMP_ACTIVITYS
   ACTIVITYID      NUMBER(10) not null,
   ACTIVCREATEDATE DATE,
   ACTIVITYLEADER  VARCHAR2(255 CHAR),
-  ACTIVITYTITLE   VARCHAR2(255 CHAR)
+  ACTIVITYTITLE   VARCHAR2(255 CHAR),
+  GROUP_ID        NUMBER
 )
 tablespace MOF
   pctfree 10
@@ -28,11 +29,22 @@ tablespace MOF
   maxtrans 255
   storage
   (
-    initial 64
-    next 1
+    initial 16K
+    next 8K
     minextents 1
     maxextents unlimited
   );
+-- Add comments to the columns 
+comment on column FUN_TMP_ACTIVITYS.ACTIVITYID
+  is '活动ID';
+comment on column FUN_TMP_ACTIVITYS.ACTIVCREATEDATE
+  is '活动创建日期';
+comment on column FUN_TMP_ACTIVITYS.ACTIVITYLEADER
+  is '活动创建者';
+comment on column FUN_TMP_ACTIVITYS.ACTIVITYTITLE
+  is '活动名称';
+comment on column FUN_TMP_ACTIVITYS.GROUP_ID
+  is '隶属团队ID';
 -- Create/Recreate primary, unique and foreign key constraints 
 alter table FUN_TMP_ACTIVITYS
   add primary key (ACTIVITYID)
@@ -53,10 +65,11 @@ alter table FUN_TMP_ACTIVITYS
   -- Create table 临时用户表
 create table FUN_TMP_USER
 (
-  USER_ID   NUMBER(20) not null,
-  USER_NAME VARCHAR2(255 CHAR),
-  PASS_WORD VARCHAR2(255 CHAR),
-  EMAIL     VARCHAR2(255 CHAR)
+  USER_ID         NUMBER(20) not null,
+  USER_NAME       VARCHAR2(255 CHAR),
+  PASS_WORD       VARCHAR2(255 CHAR),
+  EMAIL           VARCHAR2(255 CHAR),
+  USER_PHOTOGRAPH VARCHAR2(255 CHAR)
 )
 tablespace MOF
   pctfree 10
@@ -64,11 +77,22 @@ tablespace MOF
   maxtrans 255
   storage
   (
-    initial 64
-    next 8
+    initial 16K
+    next 8K
     minextents 1
     maxextents unlimited
   );
+-- Add comments to the columns 
+comment on column FUN_TMP_USER.USER_ID
+  is '用户ID';
+comment on column FUN_TMP_USER.USER_NAME
+  is '用户名';
+comment on column FUN_TMP_USER.PASS_WORD
+  is '密码';
+comment on column FUN_TMP_USER.EMAIL
+  is '邮箱';
+comment on column FUN_TMP_USER.USER_PHOTOGRAPH
+  is '头像';
 -- Create/Recreate primary, unique and foreign key constraints 
 alter table FUN_TMP_USER
   add primary key (USER_ID)
@@ -84,3 +108,4 @@ alter table FUN_TMP_USER
     minextents 1
     maxextents unlimited
   );
+

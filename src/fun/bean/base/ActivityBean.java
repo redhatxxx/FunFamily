@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -25,7 +27,19 @@ public class ActivityBean {
 	private String activLeader;
 	
 	private Date activCreateDate;
+	
+	private GroupBean group;
+	
+	@ManyToOne
+	@JoinColumn(name="group_id")
+	public GroupBean getGroup() {
+		return group;
+	}
 
+	public void setGroup(GroupBean group) {
+		this.group = group;
+	}
+	
 	@Temporal(TemporalType.TIME)
 	public Date getActivCreateDate() {
 		return activCreateDate;
