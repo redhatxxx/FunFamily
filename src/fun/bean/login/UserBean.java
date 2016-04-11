@@ -1,15 +1,19 @@
 package fun.bean.login;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import fun.bean.base.ActivityBean;
 import fun.bean.base.LeaderCardBean;
 
 @Entity
@@ -29,6 +33,18 @@ public class UserBean {
 	
 	private String photograph;
 	
+	private Set<ActivityBean> activitys = new HashSet<ActivityBean>();
+	
+	//mappedBy=多对多另一方中该类的对象
+	@ManyToMany(mappedBy="joinusers")
+	public Set<ActivityBean> getActivitys() {
+		return activitys;
+	}
+
+	public void setActivitys(Set<ActivityBean> activitys) {
+		this.activitys = activitys;
+	}
+
 	@Column(name="USER_PHOTOGRAPH")
 	public String getPhotograph() {
 		return photograph;

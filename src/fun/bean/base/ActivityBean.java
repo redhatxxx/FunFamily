@@ -1,6 +1,8 @@
 package fun.bean.base;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,11 +10,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import fun.bean.login.UserBean;
 
 @Entity
 @Table(name="FUN_TMP_ACTIVITYS")
@@ -30,6 +36,24 @@ public class ActivityBean {
 	
 	private GroupBean group;
 	
+	private Set<UserBean> joinusers = new HashSet<UserBean>();
+	
+	//多对多关联
+	@ManyToMany
+	@JoinTable(name="FUN_TMP_USER_JOIN_ACTIV",
+			//当前bean所对应中间表中的外键字段
+			joinColumns= {@JoinColumn(name="JOIN_ACTIVTY_ID")},
+			//多对多关系另一方在中间表中的外键字段
+			inverseJoinColumns={@JoinColumn(name="JOIN_USER_ID")}
+	)
+	public Set<UserBean> getJoinusers() {
+		return joinusers;
+	}
+
+	public void setJoinusers(Set<UserBean> joinusers) {
+		this.joinusers = joinusers;
+	}
+
 	@ManyToOne
 	@JoinColumn(name="group_id")
 	public GroupBean getGroup() {
