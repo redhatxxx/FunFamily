@@ -14,7 +14,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import fun.bean.login.UserBean;
+import fun.bean.login.UserBeanTmp;
 
 @Entity
 @Table(name="FUN_TMP_GROUP")
@@ -35,7 +35,7 @@ public class GroupBean {
 	private String group_creat_date;
 	
 	//团队领导者
-	private UserBean group_leader;
+	private UserBeanTmp group_leader;
 	
 	//团队logo
 	private String group_logo;
@@ -125,13 +125,13 @@ public class GroupBean {
 	}
 
 	//JoinColumn指定的是本类所映射表中的字段
-	@OneToOne(targetEntity=UserBean.class)
+	@OneToOne(targetEntity=UserBeanTmp.class)
 	@JoinColumn(name="GROUP_LEADER_ID")
-	public UserBean getGroup_leader() {
+	public UserBeanTmp getGroup_leader() {
 		return group_leader;
 	}
 
-	public void setGroup_leader(UserBean group_leader) {
+	public void setGroup_leader(UserBeanTmp group_leader) {
 		this.group_leader = group_leader;
 	}
 

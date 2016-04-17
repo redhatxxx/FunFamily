@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import fun.bean.login.UserBean;
+import org.com.union.bean.UserBean;
 
 /**
  * Servlet implementation class LoginServlet
@@ -41,8 +41,8 @@ public class LoginServlet extends HttpServlet {
 		String forward;
 		//创建业务对象
 		UserBean user = new UserBean();
-		user.setUsername(username);
-		user.setPassword(password);
+		user.setUser_nickname(username);
+		user.setUser_password(password);
 		
 		boolean b = user.validate();
 		

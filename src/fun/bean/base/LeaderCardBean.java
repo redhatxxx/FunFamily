@@ -14,7 +14,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import fun.bean.login.UserBean;
+import fun.bean.login.UserBeanTmp;
 
 @Entity
 @Table(name="FUN_LEADER_CARD")
@@ -25,7 +25,7 @@ public class LeaderCardBean {
 	
 	private String cardno;
 	
-	private UserBean user;
+	private UserBeanTmp user;
 	
 //	private GroupBean group;
 //	
@@ -58,13 +58,13 @@ public class LeaderCardBean {
 	public void setCardno(String cardno) {
 		this.cardno = cardno;
 	}
-	@OneToOne(targetEntity=UserBean.class)
+	@OneToOne(targetEntity=UserBeanTmp.class)
 	@JoinColumn(name="USER_ID")
-	public UserBean getUser() {
+	public UserBeanTmp getUser() {
 		return user;
 	}
 
-	public void setUser(UserBean user) {
+	public void setUser(UserBeanTmp user) {
 		this.user = user;
 	}
 

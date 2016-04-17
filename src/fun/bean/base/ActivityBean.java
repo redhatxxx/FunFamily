@@ -18,7 +18,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import fun.bean.login.UserBean;
+import fun.bean.login.UserBeanTmp;
 
 @Entity
 @Table(name="FUN_TMP_ACTIVITYS")
@@ -36,7 +36,7 @@ public class ActivityBean {
 	
 	private GroupBean group;
 	
-	private Set<UserBean> joinusers = new HashSet<UserBean>();
+	private Set<UserBeanTmp> joinusers = new HashSet<UserBeanTmp>();
 	
 	//多对多关联
 	@ManyToMany
@@ -46,11 +46,11 @@ public class ActivityBean {
 			//多对多关系另一方在中间表中的外键字段
 			inverseJoinColumns={@JoinColumn(name="JOIN_USER_ID")}
 	)
-	public Set<UserBean> getJoinusers() {
+	public Set<UserBeanTmp> getJoinusers() {
 		return joinusers;
 	}
 
-	public void setJoinusers(Set<UserBean> joinusers) {
+	public void setJoinusers(Set<UserBeanTmp> joinusers) {
 		this.joinusers = joinusers;
 	}
 

@@ -2,3 +2,22 @@
 2、OneToOne和ManyToOne中使用	@JoinColumn(name="该类所对应table的外键")
 3、ManyToOne双向或OneToMany单向时，get或load获取回的实例对象序列A，A在使用时会再一次调用sql如果不在
 瞬态会报错。（后续学习注意找解决方案）
+4、onetomany时查询出的字段用通用Set当需要排序时使用List
+	例子：
+		private List<UserBean> userlist = new ArrayList<UserBean>();
+		
+		@OntToMany(mappedBy="group")
+		@OrderBy("name ASC")//按name排序
+		public List<UserBean> getuserlist(){
+			return userlist;
+		}
+
+5.onetomany时查询出的字段用Map
+		private Map<Integer,UserBean> userlist = new HashMap<Integer,UserBean>();
+		
+		@OntToMany(mappedBy="group")
+		@MapKey(name="user_id")//设定MAP<key,value>的key所对应的字段（类型需相同）
+		public List<UserBean> getuserlist(){
+			return userlist;
+		}
+	

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fun.bean.login.UserBean;
+import org.com.union.bean.UserBean;
 import fun.dao.user.UserDAO;
 
 /**
@@ -40,9 +40,9 @@ public class RegisterServlet extends HttpServlet {
 		String[] likes = request.getParameterValues("like");
 		String ares = request.getParameter("area");
 		String sex = request.getParameter("sex");
-		user.setUsername(username);
-		user.setPassword(password);
-		user.setEmail(email);
+		user.setUser_nickname(username);
+		user.setUser_password(password);
+		user.setUser_email(email);
 		UserDAO dao = new UserDAO();
 		dao.saveUserInfo(user);
 		String forward = "success.jsp";

@@ -14,7 +14,7 @@ import org.hibernate.service.ServiceRegistry;
 import fun.bean.base.ActivityBean;
 import fun.bean.base.GroupBean;
 import fun.bean.base.LeaderCardBean;
-import fun.bean.login.UserBean;
+import org.com.union.bean.UserBean;
 
 public class HibernateTest {
 
@@ -28,9 +28,10 @@ public class HibernateTest {
 	public static void main(String[] args) {
 
 		UserBean bean = new UserBean();
-		bean.setUsername("redhat5");
-		bean.setEmail("ers5f@redhat.com");
-		bean.setPassword("U5F");
+//		bean.setUser_id(12345678);
+		bean.setUser_nickname("redhat5");
+		bean.setUser_password("ers5f@redhat.com");
+		bean.setUser_password("U5F");
 		
 		GroupBean group = new GroupBean();
 		group.setGroup_number("xxndws2112");
@@ -48,11 +49,11 @@ public class HibernateTest {
 		HibernateTest test = new HibernateTest();
 //		UserBean cuser = test.getuser();
 //		card.setUser(cuser);
-		
+		test.adduserdata(bean);
 //		Set<ActivityBean>  group_tmp = test.getActivsbyGoupId();
 //		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>"+group_tmp.size());
-		GroupBean  group_tmp = test.getgroup();
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>"+group_tmp.getGroup_name());
+//		GroupBean  group_tmp = test.getgroup();
+//		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>"+group_tmp.getGroup_name());
 		
 //		activity.setGroup(group_tmp);
 //		group.setGroup_leader(cuser);
@@ -110,6 +111,16 @@ public class HibernateTest {
 	private void closeSessionFactory(){
 		sf.close();
 	}
+	
+	//插入
+	public void adduserdata(UserBean usr){
+		
+		Session session = sf.getCurrentSession();
+		session.beginTransaction();
+		session.save(usr);
+		session.getTransaction().commit();
+		sf.close();
+	}
 	//插入
 	public void adddata(UserBean usr,ActivityBean activity){
 		
@@ -119,7 +130,7 @@ public class HibernateTest {
 		session.save(activity);
 		session.getTransaction().commit();
 
-		System.out.println(usr.getId());
+//		System.out.println(usr.getId());
 
 		sf.close();
 	}
@@ -144,7 +155,7 @@ public class HibernateTest {
 		Session session2 = sf.getCurrentSession();
 		session2.beginTransaction();
 		UserBean user = (UserBean)session2.load(UserBean.class, 500000034);
-		System.out.println("<><><"+user.getEmail());
+//		System.out.println("<><><"+user.getEmail());
 		session2.getTransaction().commit();
 
 	}
@@ -153,7 +164,7 @@ public class HibernateTest {
 		Session session2 = sf.getCurrentSession();
 		session2.beginTransaction();
 		UserBean user = (UserBean)session2.get(UserBean.class, 500000034);
-		System.out.println("<><><"+user.getEmail());
+//		System.out.println("<><><"+user.getEmail());
 		session2.getTransaction().commit();
 
 	}
@@ -163,7 +174,7 @@ public class HibernateTest {
 		session2.beginTransaction();
 		UserBean user = (UserBean)session2.get(UserBean.class, 500000034);	
 		session2.getTransaction().commit();
-		user.setUsername("wolf");
+//		user.setUsername("wolf");
 		Session session3 = sf.getCurrentSession();
 		session3.beginTransaction();
 		session3.update(user);
@@ -172,8 +183,8 @@ public class HibernateTest {
 	//更新
 	public void updatedata2(){
 		UserBean user = new UserBean();
-		user.setId(500000033);
-		user.setUsername("wolf");
+//		user.setId(500000033);
+//		user.setUsername("wolf");
 		Session session3 = sf.getCurrentSession();
 		session3.beginTransaction();
 		session3.update(user);
@@ -200,11 +211,11 @@ public class HibernateTest {
 		Session session3 = sf.getCurrentSession();
 		session3.beginTransaction();
 		UserBean user = (UserBean)session3.load(UserBean.class, 500000020);
-		System.out.println(user.getEmail());
+//		System.out.println(user.getEmail());
 		//清缓存
 		session3.clear(); 
 		UserBean user2 = (UserBean)session3.load(UserBean.class, 500000020);
-		System.out.println(user2.getEmail());
+//		System.out.println(user2.getEmail());
 		session3.getTransaction().commit();
 	}
 	
@@ -214,10 +225,10 @@ public class HibernateTest {
 		Session session3 = sf.getCurrentSession();
 		session3.beginTransaction();
 		UserBean user = (UserBean)session3.load(UserBean.class, 500000020);
-		user.setUsername("AAAA");
+//		user.setUsername("AAAA");
 		//强制提交，同步缓存和数据库
 		session3.flush();
-		user.setUsername("QQQQQQQQ");
+//		user.setUsername("QQQQQQQQ");
 		session3.getTransaction().commit();
 	}
 }

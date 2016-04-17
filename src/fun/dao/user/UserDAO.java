@@ -6,7 +6,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
-import fun.bean.login.UserBean;
+import org.com.union.bean.UserBean;
 
 public class UserDAO {
 	

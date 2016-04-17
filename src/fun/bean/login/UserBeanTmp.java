@@ -19,7 +19,7 @@ import fun.bean.base.LeaderCardBean;
 @Entity
 @Table(name="FUN_TMP_USER")
 @SequenceGenerator(name="usersquence",sequenceName="USER_ID_SEQUENCE",allocationSize=1)
-public class UserBean {
+public class UserBeanTmp {
 	
 	private int id;
 	
