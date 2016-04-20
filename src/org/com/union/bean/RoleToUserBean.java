@@ -19,6 +19,7 @@ import javax.persistence.Table;
 @Table(name="role_to_user")
 public class RoleToUserBean {
 
+	@Id
 	@Column(name="user_id")
 	public int getUser_id() {
 		return user_id;

@@ -42,5 +42,6 @@ PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN"
     <property name="hbm2ddl.auto">create</property> -->
     
     <mapping class="org.com.union.bean.UserBean"/>
+    <mapping class="org.com.union.bean.RoleToUserBean"/>
   </session-factory>
 </hibernate-configuration>
