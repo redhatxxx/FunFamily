@@ -32,7 +32,8 @@ public class HibernateTest {
 		bean.setUser_nickname("redhat5");
 		bean.setUser_password("ers5f@redhat.com");
 		bean.setUser_password("U5F");
-		
+		Date now = new Date();
+		bean.setUser_create_date(now);
 		GroupBean group = new GroupBean();
 		group.setGroup_number("xxndws2112");
 		group.setGroup_name("鲜花户外");

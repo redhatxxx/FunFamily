@@ -2,6 +2,7 @@ package org.com.union.bean;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -16,6 +17,7 @@ import javax.persistence.Table;
 @Table(name="permission_to_role")
 public class PermissionToRole {
 
+	@Id
 	@Column(name="role_id")
 	public int getRole_id() {
 		return role_id;

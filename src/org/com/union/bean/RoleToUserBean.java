@@ -18,7 +18,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="role_to_user")
 public class RoleToUserBean {
-
+ 
 	@Id
 	@Column(name="user_id")
 	public int getUser_id() {

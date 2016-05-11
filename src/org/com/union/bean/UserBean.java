@@ -1,16 +1,16 @@
 package org.com.union.bean;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import fun.bean.login.UserBeanTmp;
 
 /**
  * 用户类
@@ -157,13 +157,14 @@ public class UserBean {
 		this.user_login_count = user_login_count;
 	}
 
-	@Column(name="user_status_code")
-	public int getUser_status_code() {
-		return user_status_code;
+	@OneToOne
+	@JoinColumn(name="status_code")
+	public StatusBean getUser_status() {
+		return user_status;
 	}
 
-	public void setUser_status_code(int user_status_code) {
-		this.user_status_code = user_status_code;
+	public void setUser_status(StatusBean user_status_code) {
+		this.user_status = user_status_code;
 	}
 
 	@Column(name="user_hold1")
@@ -194,6 +195,16 @@ public class UserBean {
 		this.user_role = user_role;
 	}
 
+	@OneToMany(targetEntity=UserToSubject.class)
+	@JoinColumn(name="USER_ID")
+	public Set<UserToSubject> getSubjects() {
+		return subjects;
+	}
+
+	public void setSubjects(Set<UserToSubject> subjects) {
+		this.subjects = subjects;
+	}
+
 	private int user_id;
 	
 	private String user_nickname;
@@ -222,7 +233,7 @@ public class UserBean {
 	
 	private int user_login_count;
 	
-	private int user_status_code;
+	private StatusBean user_status;
 	
 	private String user_hold1;
 	
@@ -230,6 +241,8 @@ public class UserBean {
 	
 	private RoleToUserBean user_role;
 
+	private Set<UserToSubject> subjects;
+	
 	public boolean validate() {
 		// TODO Auto-generated method stub
 		return false;

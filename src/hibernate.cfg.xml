@@ -43,5 +43,8 @@ PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN"
     
     <mapping class="org.com.union.bean.UserBean"/>
     <mapping class="org.com.union.bean.RoleToUserBean"/>
+    <mapping class="org.com.union.bean.RoleBean"/>
+    <mapping class="org.com.union.bean.PermissionBean"/>
+    <mapping class="org.com.union.bean.PermissionToRole"/>
   </session-factory>
 </hibernate-configuration>
