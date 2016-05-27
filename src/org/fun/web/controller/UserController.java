@@ -21,7 +21,6 @@ public class UserController implements Controller {
 		map.put("map1", "小红帽");
 		map.put("map2", "springmvc");
 		map.put("map3", "first test");
-		
 		return new ModelAndView("/welcome","map",map);
 	}
 

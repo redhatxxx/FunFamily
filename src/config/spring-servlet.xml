@@ -15,6 +15,7 @@
 	
 	<bean name="/fun/test" class="org.fun.web.controller.UserController" />
 	
+	<mvc:resources location="/images/" mapping="/images/**"></mvc:resources>
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/"></property>
 		<property name="suffix" value=".jsp"></property>

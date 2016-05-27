@@ -15,7 +15,7 @@ function setparam(){
 <body>
 	<h1>Hell world!</h1>
 	
-	<a href="login.jsp">登录</a>
+	<a href="funlogin.jsp">登录</a>
 	<a href="register.jsp">注册</a>
 	<a href="userpages/UserDetailInfo.jsp" onclik="setparam()">test</a>
 	<a href="userpages/outputinfo.jsp" onclik="setparam()">outputinfo</a>

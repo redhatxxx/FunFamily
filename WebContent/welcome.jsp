@@ -15,9 +15,7 @@
 	${result }
 	<div>
 		<c:forEach items="${map }" var="m">
-		
 		${m.key } -----> ${m.value }
-		
 		</c:forEach>
 	</div>
 	
