@@ -14,6 +14,8 @@
 	
 	
 	<bean name="/fun/test" class="org.fun.web.controller.UserController" />
+	<bean name="/userlogin" class="org.fun.web.controller.UserLoginController"/>
+	<bean name="/userlogin.action" class="org.fun.web.controller.WelcomeController"/>
 	
 	<mvc:resources location="/images/" mapping="/images/**"></mvc:resources>
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">

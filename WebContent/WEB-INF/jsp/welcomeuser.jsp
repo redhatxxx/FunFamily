@@ -8,15 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
-	SpringMVC 练习
-	<br/>
-	<h>传递数据</h>
-	<div>
-		<c:forEach items="${map }" var="m">
-		${m.key } -----> ${m.value }
-		</c:forEach>
-	</div>
-	
+	测试数据传递
+	UserName:${loginuser.username }<br>
+	password:${loginuser.password }<br>
 </body>
 </html>

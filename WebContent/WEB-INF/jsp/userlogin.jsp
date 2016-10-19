@@ -8,15 +8,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
-	SpringMVC 练习
-	<br/>
-	<h>传递数据</h>
-	<div>
-		<c:forEach items="${map }" var="m">
-		${m.key } -----> ${m.value }
-		</c:forEach>
-	</div>
-	
+	<form action="userlogin.action" method="post">
+		<label for="name">Name: </label>
+		<input type="text" id="name" name="name" value="" tabindex="1">
+		<label for="password">PassWord: </label>
+		<input type="text" id="password" name="password" value="" tabindex="1">
+		<div id="buttons">
+			<input type="submit" id="submit" tabindex="5" value="Login">
+		</div>
+	</form>
 </body>
 </html>
