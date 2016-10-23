@@ -1,26 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-<script type="text/javascript">
-function setparam(){
-	document.getParameter().set("username","redhat");
-	
-}
-</script>
 <body>
-	<h1>Hell world!</h1>
-	<!-- 
-	<a href="funlogin.jsp">登录</a>
-	<a href="register.jsp">注册</a>
-	<a href="userpages/UserDetailInfo.jsp" onclik="setparam()">test</a>
-	<a href="userpages/outputinfo.jsp" onclik="setparam()">outputinfo</a>
-	<a href="WEB-INF/jsp/AddActivity.jsp">添加</a>
-	<a href="welcome.jsp">欢迎</a> -->
 	<form action="add_activity" method="post">
 		<label for="name">activity_name: </label>
 		<input type="text" id="activity_name" name="activity_name" value="" tabindex="1">

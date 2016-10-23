@@ -28,6 +28,9 @@
 		<!-- 请求标志（自定义） -->
 		<property name="paramName" value="action"></property>
 	</bean>
+	<context:component-scan base-package="org.fun.web.controller" />
+	<context:component-scan base-package="org.fun.web.server" />
+	<mvc:annotation-driven/>
 	<mvc:resources location="/images/" mapping="/images/**"></mvc:resources>
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/"></property>
