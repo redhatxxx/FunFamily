@@ -54,11 +54,11 @@ public class ActivityIndexController {
 	}
 	
 	@RequestMapping(value="/add_activity")
-	public String addActivityInfo(RedirectAttributes redirect){
+	public String addActivityInfo(RedirectAttributes redirect,ActivityBaseDao from){
 		ActivityBaseDao dao = new ActivityBaseDao();
-		dao.setActivityName("123");
-		dao.setActivityTime("222");
-		dao.setMarkPrice("444");
+		dao.setActivityName(from.getActivityName());
+		dao.setActivityTime(from.getActivityTime());
+		dao.setMarkPrice(from.getMarkPrice());
 		ActivityBaseDao newdao = activityserver.addActivity(dao);
 		redirect.addFlashAttribute("message", "save");
 		return "redirect:/activity_view/"+newdao.getActivityId();
@@ -69,6 +69,11 @@ public class ActivityIndexController {
 		ActivityBaseDao activitydao = activityserver.getActivity(id);
 		model.addAttribute("activity", activitydao);
 		return "/WEB-INF/jsp/ActivityInfo";
+	}
+	
+	@RequestMapping(value="/to_add_activity")
+	public String toAddActivityInfo(){
+		return "/WEB-INF/jsp/AddActivity";
 	}
 }
  

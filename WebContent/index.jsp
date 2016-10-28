@@ -14,23 +14,12 @@ function setparam(){
 </script>
 <body>
 	<h1>Hell world!</h1>
-	<!-- 
 	<a href="funlogin.jsp">登录</a>
 	<a href="register.jsp">注册</a>
 	<a href="userpages/UserDetailInfo.jsp" onclik="setparam()">test</a>
 	<a href="userpages/outputinfo.jsp" onclik="setparam()">outputinfo</a>
-	<a href="WEB-INF/jsp/AddActivity.jsp">添加</a>
-	<a href="welcome.jsp">欢迎</a> -->
-	<form action="add_activity" method="post">
-		<label for="name">activity_name: </label>
-		<input type="text" id="activity_name" name="activity_name" value="" tabindex="1">
-		<label for="password">activity_time: </label>
-		<input type="text" id="activity_time" name="activity_time" value="" tabindex="1">
-		<label for="price">activity_price: </label>
-		<input type="text" id="activity_price" name="activity_price" value="" tabindex="1">
-		<div id="buttons">
-			<input type="submit" id="submit" tabindex="5" value="Login">
-		</div>
-	</form>
+	<a href="/FunFamily/to_add_activity">添加</a>
+	<a href="welcome.jsp">欢迎</a> 
+
 </body>
 </html>

@@ -12,7 +12,7 @@
       http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd">
       
 	
-	
+	<!-- 配置式控制器及解析 -->
 	<bean name="/fun/test" class="org.fun.web.controller.UserController" />
 	<bean name="/userlogin" class="org.fun.web.controller.UserLoginController"/>
 	<bean name="/userlogin.action" class="org.fun.web.controller.WelcomeController"/>
@@ -28,6 +28,8 @@
 		<!-- 请求标志（自定义） -->
 		<property name="paramName" value="action"></property>
 	</bean>
+	
+	<!-- 注解式控制器配置 -->
 	<context:component-scan base-package="org.fun.web.controller" />
 	<context:component-scan base-package="org.fun.web.server" />
 	<mvc:annotation-driven/>
