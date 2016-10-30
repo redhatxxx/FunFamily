@@ -8,7 +8,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-	  注册界面
-	 当前打印信息： ${method }
+	<form action="user_login" method="post">
+		<label for="name">Name: </label>
+		<input type="text" id="user_name" name="user_name" value="" tabindex="1">
+		<label for="password">PassWord: </label>
+		<input type="text" id="user_password" name="user_password" value="" tabindex="1">
+		<div id="buttons">
+			<input type="submit" id="submit" tabindex="5" value="Login">
+		</div>
+	</form>
 </body>
 </html>

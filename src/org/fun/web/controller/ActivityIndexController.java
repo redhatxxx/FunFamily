@@ -39,7 +39,7 @@ public class ActivityIndexController {
 		activityserver.addActivity(activitydao1);
 		activityserver.addActivity(activitydao2);
 		model.addAttribute("activs", activitys);
-		return "/WEB-INF/jsp/ActivityIndex";
+		return "/WEB-INF/jsp/activity/ActivityIndex";
 	}
 	
 	@RequestMapping(value="/activity_view")
@@ -50,7 +50,7 @@ public class ActivityIndexController {
 		activitydao.setActivityTime("2016/10/24");
 		activitydao.setMarkPrice("23.1");
 		model.addAttribute("activity", activitydao);
-		return "/WEB-INF/jsp/ActivityInfo";
+		return "/WEB-INF/jsp/activity/ActivityInfo";
 	}
 	
 	@RequestMapping(value="/add_activity")
@@ -68,12 +68,12 @@ public class ActivityIndexController {
 	public String ActivityInfoView(@PathVariable String id,Model model){
 		ActivityBaseDao activitydao = activityserver.getActivity(id);
 		model.addAttribute("activity", activitydao);
-		return "/WEB-INF/jsp/ActivityInfo";
+		return "/WEB-INF/jsp/activity/ActivityInfo";
 	}
 	
 	@RequestMapping(value="/to_add_activity")
 	public String toAddActivityInfo(){
-		return "/WEB-INF/jsp/AddActivity";
+		return "/WEB-INF/jsp/activity/AddActivity";
 	}
 }
  

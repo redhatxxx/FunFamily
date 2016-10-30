@@ -1,27 +1,40 @@
 package org.fun.web.controller;
 
-import java.util.HashMap;
-import java.util.Map;
+import org.fun.web.dao.UserBaseDao;
+import org.fun.web.server.UserAcionMethod;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+@Controller
+public class UserController{
 
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.Controller;
-
-public class UserController implements Controller {
-
-	@Override
-	public ModelAndView handleRequest(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
-		// TODO Auto-generated method stub
-		System.out.println("--------------Spring Mvc Start---------------");
-		
-		String hello = "fight ， redhat";
-		Map map = new HashMap();
-		map.put("map1", "小红帽");
-		map.put("map2", "springmvc");
-		map.put("map3", "first test");
-		return new ModelAndView("/welcome","map",map);
+	@Autowired(required=true)
+	private UserAcionMethod usermethod;
+	
+	@RequestMapping(value="/user_register")
+	public String addUser(UserBaseDao dao,Model model){
+		UserBaseDao userdao = usermethod.addUser(dao);
+		String user_name = userdao.getUser_name();
+		model.addAttribute("username", user_name);
+		return "/WEB-INF/jsp/user/welcomeuser";
 	}
-
+	
+	@RequestMapping(value="/user_login")
+	public String userLogin(UserBaseDao dao,Model model){
+		String username = dao.getUser_name();
+		model.addAttribute("username", username);
+		return "/WEB-INF/jsp/user/welcomeuser";
+	}
+	
+	@RequestMapping(value="login")
+	public String loginView(){
+		return "/WEB-INF/jsp/user/userlogin";
+	}
+	
+	@RequestMapping(value="register")
+	public String registerView(){
+		return "/WEB-INF/jsp/user/userregister";
+	}
 }

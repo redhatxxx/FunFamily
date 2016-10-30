@@ -12,22 +12,22 @@
       http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd">
       
 	
-	<!-- 配置式控制器及解析 -->
+	<!-- 配置式控制器及解析 
 	<bean name="/fun/test" class="org.fun.web.controller.UserController" />
 	<bean name="/userlogin" class="org.fun.web.controller.UserLoginController"/>
-	<bean name="/userlogin.action" class="org.fun.web.controller.WelcomeController"/>
-	<!-- 一个controller多个方法注册 -->
-	<bean name="/userregister" class="org.fun.web.controller.RegisterAndWelController">
-		<!-- 引用方法解析器 -->
+	<bean name="/userlogin.action" class="org.fun.web.controller.WelcomeController"/>-->
+	<!-- 一个controller多个方法注册 
+	<bean name="/userregister" class="org.fun.web.controller.RegisterAndWelController">-->
+		<!-- 引用方法解析器
 		<property name="methodNameResolver">
 		  <ref bean="parameterMethodResolver"/>
 		</property>
-	</bean>
-	<!-- 配置方法解析器（spring自带） -->
-	<bean id="parameterMethodResolver" class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
-		<!-- 请求标志（自定义） -->
+	</bean> -->
+	<!-- 配置方法解析器（spring自带）
+	<bean id="parameterMethodResolver" class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver"> -->
+		<!-- 请求标志（自定义）
 		<property name="paramName" value="action"></property>
-	</bean>
+	</bean> -->
 	
 	<!-- 注解式控制器配置 -->
 	<context:component-scan base-package="org.fun.web.controller" />

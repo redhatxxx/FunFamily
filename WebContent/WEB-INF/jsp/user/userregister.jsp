@@ -8,13 +8,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="userlogin.action" method="post">
+	<form action="user_register" method="post">
 		<label for="name">Name: </label>
-		<input type="text" id="name" name="name" value="" tabindex="1">
+		<input type="text" id="user_name" name="user_name" value="" tabindex="1">
 		<label for="password">PassWord: </label>
-		<input type="text" id="password" name="password" value="" tabindex="1">
+		<input type="text" id="user_password" name="user_password" value="" tabindex="1">
+		<label for="password">RePassWord: </label>
+		<input type="text" id="user_repassword" name="user_repassword" value="" tabindex="1">
 		<div id="buttons">
-			<input type="submit" id="submit" tabindex="5" value="Login">
+			<input type="submit" id="submit" tabindex="5" value="Register">
 		</div>
 	</form>
 </body>
