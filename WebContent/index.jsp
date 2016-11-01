@@ -6,12 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-<script type="text/javascript">
-function setparam(){
-	document.getParameter().set("username","redhat");
-	
-}
-</script>
 <body>
 	<h1>Hell world!</h1>
 	<a href="funlogin.jsp">登录</a>
