@@ -11,5 +11,7 @@
 	活动名称 ： ${activity.activityName }
 	活动时间 : ${activity.activityTime }
 	报名费：${activity.markPrice }
+	<br>
+	<img alt="testimg" src="../images/loginimg/enter.png">
 </body>
 </html>

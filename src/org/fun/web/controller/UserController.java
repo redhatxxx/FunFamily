@@ -18,23 +18,23 @@ public class UserController{
 		UserBaseDao userdao = usermethod.addUser(dao);
 		String user_name = userdao.getUser_name();
 		model.addAttribute("username", user_name);
-		return "/WEB-INF/jsp/user/welcomeuser";
+		return "/jsp/user/welcomeuser";
 	}
 	
 	@RequestMapping(value="/user_login")
 	public String userLogin(UserBaseDao dao,Model model){
 		String username = dao.getUser_name();
 		model.addAttribute("username", username);
-		return "/WEB-INF/jsp/user/welcomeuser";
+		return "/jsp/user/welcomeuser";
 	}
 	
 	@RequestMapping(value="login")
 	public String loginView(){
-		return "/WEB-INF/jsp/user/userlogin";
+		return "/jsp/user/userlogin";
 	}
 	
 	@RequestMapping(value="register")
 	public String registerView(){
-		return "/WEB-INF/jsp/user/userregister";
+		return "/jsp/user/userregister";
 	}
 }

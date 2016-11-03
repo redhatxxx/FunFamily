@@ -5,6 +5,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">
+	@import url("<c:url value="/css/basestyle.css"/>");
+</style>
 <title>Insert title here</title>
 </head>
 <body>
