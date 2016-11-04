@@ -1,1 +1,9 @@
-@CHARSET "UTF-8";
+h1 {
+	color: red;
+	text-align: center;
+}
+p{
+	color: blue;
+	font-family: "Î¢ÈíÑÅºÚ";
+	font-size: 14px;
+}

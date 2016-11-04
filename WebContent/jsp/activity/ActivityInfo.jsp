@@ -5,12 +5,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">
+	@import url("<c:url value="/css/basestyle.css"/>");
+</style>
+
 <title>Insert title here</title>
 </head>
 <body>
-	活动名称 ： ${activity.activityName }
-	活动时间 : ${activity.activityTime }
-	报名费：${activity.markPrice }
+	<h1>活动信息</h1>
+	<p>活动名称 ： ${activity.activityName }</p>
+	<p>活动时间 : ${activity.activityTime }</p>
+	<p>报名费：${activity.markPrice }</p>
 	<br>
 	<img alt="testimg" src="../images/loginimg/enter.png">
 </body>
