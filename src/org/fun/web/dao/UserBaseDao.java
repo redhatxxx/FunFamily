@@ -1,22 +1,37 @@
 package org.fun.web.dao;
 
-public class UserBaseDao {
+import java.io.Serializable;
+import java.util.List;
 
-	public String user_id;
-	
-	public String user_name;
-	
-	public String user_password;
-	
-	public String user_repassword;
+import org.springframework.web.multipart.MultipartFile;
 
-	public String user_sex;
+public class UserBaseDao{
+
+	private String user_id;
 	
-	public String user_email;
+	private String user_name;
 	
-	public String user_regist_time;
+	private String user_password;
 	
-	public String user_last_login_time;
+	private String user_repassword;
+
+	private String user_sex;
+	
+	private String user_email;
+	
+	private String user_regist_time;
+	
+	private String user_last_login_time;
+	
+	private String sculptrue_path;
+	
+	public String getSculptrue_path() {
+		return sculptrue_path;
+	}
+
+	public void setSculptrue_path(String sculptrue_path) {
+		this.sculptrue_path = sculptrue_path;
+	}
 
 	public String getUser_name() {
 		return user_name;
