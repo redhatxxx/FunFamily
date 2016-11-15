@@ -1,13 +1,13 @@
 package org.fun.web.dao;
 
 public class ActivityBaseDao {
-	public String activityName;
+	private String activityName;
 	
-	public String activityTime;
+	private String activityTime;
 	
-	public String activityId;
+	private String activityId;
 	
-	public String markPrice;
+	private String markPrice;
 
 	public String getActivityName() {
 		return activityName;

@@ -1,10 +1,15 @@
 package org.fun.web.dao;
 
-import java.io.Serializable;
-import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-import org.springframework.web.multipart.MultipartFile;
-
+/**
+ * 用户持久化类
+ * */
+@Entity
+@Table(name="SYS_FUN_USER")
 public class UserBaseDao{
 
 	private String user_id;
@@ -15,7 +20,7 @@ public class UserBaseDao{
 	
 	private String user_repassword;
 
-	private String user_sex;
+	private int user_sex;
 	
 	private String user_email;
 	
@@ -25,6 +30,7 @@ public class UserBaseDao{
 	
 	private String sculptrue_path;
 	
+	@Column(name="sculptrue_path")
 	public String getSculptrue_path() {
 		return sculptrue_path;
 	}
@@ -33,6 +39,7 @@ public class UserBaseDao{
 		this.sculptrue_path = sculptrue_path;
 	}
 
+	@Column(name="user_name")
 	public String getUser_name() {
 		return user_name;
 	}
@@ -40,7 +47,8 @@ public class UserBaseDao{
 	public void setUser_name(String user_name) {
 		this.user_name = user_name;
 	}
-
+	
+	@Column(name="user_password")
 	public String getUser_password() {
 		return user_password;
 	}
@@ -49,14 +57,16 @@ public class UserBaseDao{
 		this.user_password = user_password;
 	}
 
-	public String getUser_sex() {
+	@Column(name="user_sex")
+	public int getUser_sex() {
 		return user_sex;
 	}
 
-	public void setUser_sex(String user_sex) {
+	public void setUser_sex(int user_sex) {
 		this.user_sex = user_sex;
 	}
 
+	@Column(name="user_email")
 	public String getUser_email() {
 		return user_email;
 	}
@@ -65,6 +75,7 @@ public class UserBaseDao{
 		this.user_email = user_email;
 	}
 
+	@Column(name="user_regist_time")
 	public String getUser_regist_time() {
 		return user_regist_time;
 	}
@@ -73,6 +84,7 @@ public class UserBaseDao{
 		this.user_regist_time = user_regist_time;
 	}
 
+	@Column(name="user_last_login_time")
 	public String getUser_last_login_time() {
 		return user_last_login_time;
 	}
@@ -81,6 +93,8 @@ public class UserBaseDao{
 		this.user_last_login_time = user_last_login_time;
 	}
 
+	@Id
+	@Column(name="user_id")
 	public String getUser_id() {
 		return user_id;
 	}

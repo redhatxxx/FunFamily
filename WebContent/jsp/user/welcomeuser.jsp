@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-		欢迎，${username }
+		欢迎，${username }<br>
+		id是:${userid }
 </body>
 </html>

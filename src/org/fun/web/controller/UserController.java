@@ -2,12 +2,12 @@ package org.fun.web.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Iterator;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.fun.web.dao.UserBaseDao;
+import org.fun.web.server.IUserBeanManager;
 import org.fun.web.server.UserAcionMethod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,8 +15,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 @Controller
 @RequestMapping(value="/user")
@@ -24,6 +22,9 @@ public class UserController{
 
 	@Autowired(required=true)
 	private UserAcionMethod usermethod;
+	
+	@Resource(name="usermanager")
+	private IUserBeanManager usermanager;
 	
 	@RequestMapping(value="/user_register")
 	public String addUser(UserBaseDao dao,Model model){
@@ -72,5 +73,17 @@ public class UserController{
 	@RequestMapping(value="register")
 	public String registerView(){
 		return "/jsp/user/userregister";
+	}
+	
+
+	@RequestMapping(value="/testspring")
+	public String testSpring(Model model){
+		UserBaseDao user = new UserBaseDao();
+		user.setUser_name("Spring");
+		user.setUser_password("mvc");
+		usermanager.addUser(user);
+		model.addAttribute("username", user.getUser_name());
+		model.addAttribute("userid", user.getUser_id());
+		return "/jsp/user/welcomeuser";
 	}
 }
