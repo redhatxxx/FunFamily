@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
-import org.fun.web.dao.UserBaseDao;
+import org.fun.web.dao.bean.UserBaseBean;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,14 +15,14 @@ public class UserActionServerIml implements UserAcionMethod {
 	private AtomicLong generator = new AtomicLong();
 	
 	@Override
-	public UserBaseDao getUser(String userId) {
+	public UserBaseBean getUser(String userId) {
 		// TODO Auto-generated method stub
-		UserBaseDao user = (UserBaseDao)usersMap.get(userId);
+		UserBaseBean user = (UserBaseBean)usersMap.get(userId);
 		return user;
 	}
 
 	@Override
-	public UserBaseDao addUser(UserBaseDao user) {
+	public UserBaseBean addUser(UserBaseBean user) {
 		// TODO Auto-generated method stub
 		Long actId = this.generator.incrementAndGet();
 		String id = String.valueOf(actId);
@@ -32,7 +32,7 @@ public class UserActionServerIml implements UserAcionMethod {
 	}
 
 	@Override
-	public UserBaseDao delUser(String userId) {
+	public UserBaseBean delUser(String userId) {
 		// TODO Auto-generated method stub
 		usersMap.remove(userId);
 		return null;

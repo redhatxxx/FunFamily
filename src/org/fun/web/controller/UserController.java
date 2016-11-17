@@ -6,7 +6,7 @@ import java.io.IOException;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
-import org.fun.web.dao.UserBaseDao;
+import org.fun.web.dao.bean.UserBaseBean;
 import org.fun.web.server.IUserBeanManager;
 import org.fun.web.server.UserAcionMethod;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,22 +27,25 @@ public class UserController{
 	private IUserBeanManager usermanager;
 	
 	@RequestMapping(value="/user_register")
-	public String addUser(UserBaseDao dao,Model model){
-		UserBaseDao userdao = usermethod.addUser(dao);
-		String user_name = userdao.getUser_name();
-		model.addAttribute("username", user_name);
+	public String addUser(UserBaseBean user,Model model){
+		usermanager.addUser(user);
+		model.addAttribute("username", user.getUser_name());
+		model.addAttribute("userid", user.getUser_id());
+//		UserBaseBean userdao = usermethod.addUser(user);
+//		String user_name = userdao.getUser_name();
+//		model.addAttribute("username", user_name);
 		return "/jsp/user/welcomeuser";
 	}
 	
 	@RequestMapping(value="/user_login")
-	public String userLogin(UserBaseDao dao,Model model){
+	public String userLogin(UserBaseBean dao,Model model){
 		String username = dao.getUser_name();
 		model.addAttribute("username", username);
 		return "/jsp/user/welcomeuser";
 	}
 	
 	@RequestMapping(value="/save_userinfo")
-	public String saveUserInfo(@RequestParam("usersculpture") MultipartFile usersculpture,UserBaseDao dao,Model model,HttpServletRequest request){
+	public String saveUserInfo(@RequestParam("usersculpture") MultipartFile usersculpture,UserBaseBean dao,Model model,HttpServletRequest request){
 		String imagename = usersculpture.getOriginalFilename();
 		File savefile = new File(request.getServletContext().getRealPath("/images"), "upload" + imagename);
 		try {
@@ -54,7 +57,7 @@ public class UserController{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		UserBaseDao user = usermethod.addUser(dao);
+		UserBaseBean user = usermethod.addUser(dao);
 		user.setSculptrue_path("upload" + imagename);
 		model.addAttribute("userinfo", user);
 		return "/jsp/user/userinfo";
@@ -65,12 +68,12 @@ public class UserController{
 		
 		return "/jsp/user/edituserinfo";
 	}
-	@RequestMapping(value="login")
+	@RequestMapping(value="/login")
 	public String loginView(){
 		return "/jsp/user/userlogin";
 	}
 	
-	@RequestMapping(value="register")
+	@RequestMapping(value="/register")
 	public String registerView(){
 		return "/jsp/user/userregister";
 	}
@@ -78,7 +81,7 @@ public class UserController{
 
 	@RequestMapping(value="/testspring")
 	public String testSpring(Model model){
-		UserBaseDao user = new UserBaseDao();
+		UserBaseBean user = new UserBaseBean();
 		user.setUser_name("Spring");
 		user.setUser_password("mvc");
 		usermanager.addUser(user);

@@ -4,33 +4,38 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.fun.web.common.AbstractUuidGenerate;
-import org.fun.web.dao.UserBaseDao;
+import org.fun.web.dao.IUserBaseDao;
+import org.fun.web.dao.bean.UserBaseBean;
 
 public class UserBeanManager implements IUserBeanManager {
 
 	private Map usersMap = new HashMap();
 	
+	private IUserBaseDao  userdao;
+	
 	@Override
-	public UserBaseDao getUser(String userId) {
+	public UserBaseBean getUser(String userId) {
 		// TODO Auto-generated method stub
-		UserBaseDao userdao = (UserBaseDao)usersMap.get(userId);
+		UserBaseBean userdao = (UserBaseBean)usersMap.get(userId);
 		return userdao;
 	}
 
 	@Override
-	public UserBaseDao addUser(UserBaseDao user) {
+	public UserBaseBean addUser(UserBaseBean user) {
 		// TODO Auto-generated method stub
-		String uuid = AbstractUuidGenerate.getUUID();
-		user.setUser_id(uuid);
-		usersMap.put(uuid, user);
+		this.userdao.addUser(user);
 		return user;
 	}
 
 	@Override
-	public UserBaseDao delUser(String userId) {
+	public UserBaseBean delUser(String userId) {
 		// TODO Auto-generated method stub
 		usersMap.remove(userId);
 		return null;
+	}
+	
+	public void setUserdao(IUserBaseDao userdao) {
+		this.userdao = userdao;
 	}
 
 }

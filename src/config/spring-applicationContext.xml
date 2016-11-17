@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd" [
+<!ENTITY contextInclude SYSTEM "org/springframework/web/context/WEB-INF/contextInclude.xml">
+]>
+
+<beans>
+
+	<!-- dao层配置 -->
+	<bean id="userDao" class="org.fun.web.dao.UserBaseDao">
+		<property name="sessionfactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!-- server层配置 -->
+	<bean id="usermanagerbase" class="org.fun.web.server.UserBeanManager">
+		<property name="userdao" ref="userDao"></property>
+	</bean>
+
+	<!-- 继承事务配置 -->
+	<bean id="usermanager" parent="transactionbase">
+		<property name="target" ref="usermanagerbase"></property>
+	</bean>
+</beans>
