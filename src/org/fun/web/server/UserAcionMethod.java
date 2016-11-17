@@ -1,10 +1,10 @@
 package org.fun.web.server;
 
-import org.fun.web.dao.UserBaseDao;
+import org.fun.web.dao.bean.UserBaseBean;
 
 public interface UserAcionMethod {
 	
-	UserBaseDao getUser(String userId);
-	UserBaseDao addUser(UserBaseDao user);
-	UserBaseDao delUser(String userId);
+	UserBaseBean getUser(String userId);
+	UserBaseBean addUser(UserBaseBean user);
+	UserBaseBean delUser(String userId);
 }

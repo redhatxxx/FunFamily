@@ -1,20 +1,20 @@
 package org.fun.web.server;
 
-import org.fun.web.dao.UserBaseDao;
+import org.fun.web.dao.bean.UserBaseBean;
 
 public interface IUserBeanManager {
 	/**
 	 * 根据ID获取用户对象
 	 * */
-	UserBaseDao getUser(String userId);
+	UserBaseBean getUser(String userId);
 	
 	/**
 	 * 新添加一个用户对象
 	 * */
-	UserBaseDao addUser(UserBaseDao user);
+	UserBaseBean addUser(UserBaseBean user);
 	
 	/**
 	 * 删除用户对象
 	 * */
-	UserBaseDao delUser(String userId);
+	UserBaseBean delUser(String userId);
 }
