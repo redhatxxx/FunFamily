@@ -12,24 +12,6 @@ import javax.persistence.Table;
 @Table(name="SYS_FUN_USER")
 public class UserBaseBean{
 
-	private String user_id;
-	
-	private String user_name;
-	
-	private String user_password;
-	
-	private String user_repassword;
-
-	private int user_sex;
-	
-	private String user_email;
-	
-	private String user_regist_time;
-	
-	private String user_last_login_time;
-	
-	private String sculptrue_path;
-	
 	@Column(name="sculptrue_path")
 	public String getSculptrue_path() {
 		return sculptrue_path;
@@ -111,4 +93,22 @@ public class UserBaseBean{
 		this.user_repassword = user_repassword;
 	}
 
+	private String user_id;
+	
+	private String user_name;
+	
+	private String user_password;
+	
+	private String user_repassword;
+
+	private int user_sex;
+	
+	private String user_email;
+	
+	private String user_regist_time;
+	
+	private String user_last_login_time;
+	
+	private String sculptrue_path;
+	
 }
