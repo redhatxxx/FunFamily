@@ -1,5 +1,7 @@
 package org.fun.web.dao;
 
+import java.util.List;
+
 import org.fun.web.dao.bean.UserBaseBean;
 
 public interface IUserBaseDao {
@@ -17,4 +19,9 @@ public interface IUserBaseDao {
 	 * 删除用户对象
 	 * */
 	UserBaseBean delUser(String userId);
+	
+	/**
+	 * 获取用户list
+	 * */
+	List<UserBaseBean> getUserList(List conditions);
 }

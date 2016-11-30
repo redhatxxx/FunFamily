@@ -2,6 +2,7 @@ package org.fun.web.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -31,9 +32,6 @@ public class UserController{
 		usermanager.addUser(user);
 		model.addAttribute("username", user.getUser_name());
 		model.addAttribute("userid", user.getUser_id());
-//		UserBaseBean userdao = usermethod.addUser(user);
-//		String user_name = userdao.getUser_name();
-//		model.addAttribute("username", user_name);
 		return "/jsp/user/welcomeuser";
 	}
 	
@@ -61,6 +59,13 @@ public class UserController{
 		user.setSculptrue_path("upload" + imagename);
 		model.addAttribute("userinfo", user);
 		return "/jsp/user/userinfo";
+	}
+	
+	@RequestMapping(value="/userlist")
+	public String userListShow(Model model){
+		List userlist = usermanager.getUserList(null);
+		model.addAttribute("userlist", userlist);
+		return "/jsp/user/userlist";
 	}
 	
 	@RequestMapping(value="/edit_userinfo")

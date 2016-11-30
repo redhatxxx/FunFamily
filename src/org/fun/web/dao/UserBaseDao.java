@@ -1,10 +1,12 @@
 package org.fun.web.dao;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.fun.web.common.AbstractUuidGenerate;
 import org.fun.web.dao.bean.UserBaseBean;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 
 public class UserBaseDao implements IUserBaseDao{
@@ -39,5 +41,17 @@ public class UserBaseDao implements IUserBaseDao{
 	
 	public void setSessionfactory(SessionFactory sessionfactory) {
 		this.sessionfactory = sessionfactory;
+	}
+
+	@Override
+	public List<UserBaseBean> getUserList(List conditions) {
+		// TODO Auto-generated method stub
+		String hql = " from UserBaseBean ";
+		if(conditions!=null){
+			
+		}
+		Query query = this.sessionfactory.getCurrentSession().createQuery(hql);
+		
+		return query.list();
 	}
 }

@@ -1,6 +1,7 @@
 package org.fun.web.server;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.fun.web.common.AbstractUuidGenerate;
@@ -36,6 +37,12 @@ public class UserBeanManager implements IUserBeanManager {
 	
 	public void setUserdao(IUserBaseDao userdao) {
 		this.userdao = userdao;
+	}
+
+	@Override
+	public List<UserBaseBean> getUserList(List conditions) {
+		// TODO Auto-generated method stub
+		return this.userdao.getUserList(conditions);
 	}
 
 }
