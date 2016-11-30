@@ -2,10 +2,12 @@ package org.fun.web.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.fun.web.dao.bean.UserBaseBean;
 import org.fun.web.server.IUserBeanManager;
@@ -27,6 +29,7 @@ public class UserController{
 	@Resource(name="usermanager")
 	private IUserBeanManager usermanager;
 	
+	//注册用户
 	@RequestMapping(value="/user_register")
 	public String addUser(UserBaseBean user,Model model){
 		usermanager.addUser(user);
@@ -35,6 +38,7 @@ public class UserController{
 		return "/jsp/user/welcomeuser";
 	}
 	
+	//用户登录
 	@RequestMapping(value="/user_login")
 	public String userLogin(UserBaseBean dao,Model model){
 		String username = dao.getUser_name();
@@ -42,6 +46,7 @@ public class UserController{
 		return "/jsp/user/welcomeuser";
 	}
 	
+	//保存编辑用户信息
 	@RequestMapping(value="/save_userinfo")
 	public String saveUserInfo(@RequestParam("usersculpture") MultipartFile usersculpture,UserBaseBean dao,Model model,HttpServletRequest request){
 		String imagename = usersculpture.getOriginalFilename();
@@ -61,6 +66,25 @@ public class UserController{
 		return "/jsp/user/userinfo";
 	}
 	
+	//用户列表
+	@RequestMapping(value="/deleteuser")
+	public void deleteUserById(String userId,HttpServletResponse response){
+		boolean flag =  usermanager.delUser(userId);
+		PrintWriter out = null;
+		response.setContentType("application/json");
+		String result = "{\"flag\":\"1\"}";
+		if(!flag)
+			result="{\"flag\":\"0\"}";
+		try{
+			out = response.getWriter();
+			out.write(result);
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+	}
+	
+	
+	//用户列表
 	@RequestMapping(value="/userlist")
 	public String userListShow(Model model){
 		List userlist = usermanager.getUserList(null);
@@ -68,16 +92,19 @@ public class UserController{
 		return "/jsp/user/userlist";
 	}
 	
+	//用户信息编辑页面
 	@RequestMapping(value="/edit_userinfo")
-	public String saveUserInfo(Model model){
+	public String editUserInfo(Model model){
 		
 		return "/jsp/user/edituserinfo";
 	}
+	//用户登录页面
 	@RequestMapping(value="/login")
 	public String loginView(){
 		return "/jsp/user/userlogin";
 	}
 	
+	//用户注册页面
 	@RequestMapping(value="/register")
 	public String registerView(){
 		return "/jsp/user/userregister";

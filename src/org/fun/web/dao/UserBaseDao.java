@@ -33,10 +33,12 @@ public class UserBaseDao implements IUserBaseDao{
 	}
 
 	@Override
-	public UserBaseBean delUser(String userId) {
+	public boolean delUser(String userId) {
 		// TODO Auto-generated method stub
-		usersMap.remove(userId);
-		return null;
+		String hql = "delete UserBaseBean u where u.user_id=? ";
+		Query query = this.sessionfactory.getCurrentSession().createQuery(hql);
+		query.setString(0, userId);
+		return (query.executeUpdate()>0);
 	}
 	
 	public void setSessionfactory(SessionFactory sessionfactory) {

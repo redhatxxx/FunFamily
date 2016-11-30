@@ -29,10 +29,9 @@ public class UserBeanManager implements IUserBeanManager {
 	}
 
 	@Override
-	public UserBaseBean delUser(String userId) {
+	public boolean delUser(String userId) {
 		// TODO Auto-generated method stub
-		usersMap.remove(userId);
-		return null;
+		return this.userdao.delUser(userId);
 	}
 	
 	public void setUserdao(IUserBaseDao userdao) {

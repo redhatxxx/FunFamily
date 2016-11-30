@@ -18,7 +18,7 @@ public interface IUserBaseDao {
 	/**
 	 * 删除用户对象
 	 * */
-	UserBaseBean delUser(String userId);
+	boolean delUser(String userId);
 	
 	/**
 	 * 获取用户list
