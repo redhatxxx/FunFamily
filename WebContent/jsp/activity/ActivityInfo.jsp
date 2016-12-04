@@ -13,9 +13,9 @@
 </head>
 <body>
 	<h1>活动信息</h1>
-	<p>活动名称 ： ${activity.activityName }</p>
-	<p>活动时间 : ${activity.activityTime }</p>
-	<p>报名费：${activity.markPrice }</p>
+	<p>活动名称 ： ${activity.activity_name }</p>
+	<p>活动时间 : ${activity.activity_time }</p>
+	<p>报名费：${activity.activity_markPrice }</p>
 	<br>
 	<img alt="testimg" src="../images/loginimg/enter.png">
 </body>

@@ -24,4 +24,9 @@ public interface IUserBeanManager {
 	 * 获取用户list
 	 * */
 	List<UserBaseBean> getUserList(List conditions);
+	
+	/**
+	 * 更新用户信息
+	 * */
+	boolean updateUser(UserBaseBean user);
 }

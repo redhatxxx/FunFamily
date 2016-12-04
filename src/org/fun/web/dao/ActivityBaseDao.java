@@ -1,44 +1,69 @@
 package org.fun.web.dao;
 
-public class ActivityBaseDao {
-	private String activityName;
+import java.util.List;
+
+import org.fun.web.common.AbstractUuidGenerate;
+import org.fun.web.dao.bean.ActivityBaseBean;
+import org.hibernate.SessionFactory;
+import org.hibernate.Query;
+
+public class ActivityBaseDao implements IActivityBaseDao {
+
+	private SessionFactory sessionfactory;
 	
-	private String activityTime;
-	
-	private String activityId;
-	
-	private String markPrice;
-
-	public String getActivityName() {
-		return activityName;
+	public void setSessionfactory(SessionFactory sessionfactory) {
+		this.sessionfactory = sessionfactory;
 	}
 
-	public void setActivityName(String activityName) {
-		this.activityName = activityName;
+	@Override
+	public ActivityBaseBean addActivity(ActivityBaseBean dao) {
+		// TODO Auto-generated method stub
+		String uuid = AbstractUuidGenerate.getUUID();
+		dao.setActivity_id(uuid);
+		sessionfactory.getCurrentSession().save(dao);
+		return dao;
 	}
 
-	public String getActivityTime() {
-		return activityTime;
+	@Override
+	public ActivityBaseBean getActivity(String activityId) {
+		// TODO Auto-generated method stub
+		String gethql = "from ActivityBaseBean a where a.activity_id = ?";
+		Query query = this.sessionfactory.getCurrentSession().createQuery(gethql);
+		query.setString(0, activityId);
+		return (ActivityBaseBean)query.uniqueResult();
 	}
 
-	public void setActivityTime(String activityTime) {
-		this.activityTime = activityTime;
+	@Override
+	public boolean delActivity(String activityId) {
+		// TODO Auto-generated method stub
+		String delhql = "delete ActivityBaseBean a where a.activity_id = ?";
+		Query query = this.sessionfactory.getCurrentSession().createQuery(delhql);
+		query.setString(0, activityId);
+		return (query.executeUpdate()>0);
 	}
 
-	public String getActivityId() {
-		return activityId;
+	@Override
+	public boolean updateActivity(ActivityBaseBean dao) {
+		// TODO Auto-generated method stub
+		String updatehql = "update ActivityBaseBean u set u.activity_name =? , u.activity_time=? , u.activity_markPrice=? where u.activity_id = ?";
+		Query query = this.sessionfactory.getCurrentSession().createQuery(updatehql);
+		query.setString(0, dao.getActivity_name());
+		query.setString(1, dao.getActivity_time());
+		query.setString(2, dao.getActivity_markPrice());
+		query.setString(3, dao.getActivity_id());
+		
+		return (query.executeUpdate()>0);
 	}
 
-	public void setActivityId(String activityId) {
-		this.activityId = activityId;
+	@Override
+	public List<ActivityBaseBean> getActivityList(List conditions) {
+		// TODO Auto-generated method stub
+		String hql = " from ActivityBaseBean ";
+		if(conditions!=null){
+			
+		}
+		Query query = this.sessionfactory.getCurrentSession().createQuery(hql);
+		
+		return query.list();
 	}
-
-	public String getMarkPrice() {
-		return markPrice;
-	}
-
-	public void setMarkPrice(String markPrice) {
-		this.markPrice = markPrice;
-	}
-	
 }

@@ -1,14 +1,11 @@
 package org.fun.web.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.annotation.Resource;
 
-import org.fun.web.dao.ActivityBaseDao;
-import org.fun.web.server.ActivityActionMethod;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.fun.web.dao.bean.ActivityBaseBean;
+import org.fun.web.server.IActivityBeanManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,55 +15,42 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 public class ActivityIndexController {
 	
-	@Autowired(required=true)
-	private ActivityActionMethod activityserver;
+	@Resource(name="activitymanager")
+	private IActivityBeanManager activityserver;
 	
 	@RequestMapping(value="/activity_index")
 	public String ActivityIndex(Model model){
-		List activitys = new ArrayList();
-		ActivityBaseDao activitydao1 = new ActivityBaseDao();
-		activitydao1.setActivityId("321123");
-		activitydao1.setActivityName("长白山");
-		activitydao1.setActivityTime("2016/10/24");
-		activitydao1.setMarkPrice("23.1");
-		ActivityBaseDao activitydao2 = new ActivityBaseDao();
-		activitydao2.setActivityId("321123");
-		activitydao2.setActivityName("玉龙雪山");
-		activitydao2.setActivityTime("2016/10/24");
-		activitydao2.setMarkPrice("300");
-		activitys.add(activitydao1);
-		activitys.add(activitydao2);
-		activityserver.addActivity(activitydao1);
-		activityserver.addActivity(activitydao2);
+		List<ActivityBaseBean> activitys = activityserver.getActivityList(null);
 		model.addAttribute("activs", activitys);
 		return "/jsp/activity/ActivityIndex";
 	}
 	
 	@RequestMapping(value="/activity_view")
 	public String ActivityInfoView(Model model){
-		ActivityBaseDao activitydao = new ActivityBaseDao();
-		activitydao.setActivityId("321123");
-		activitydao.setActivityName("长白山");
-		activitydao.setActivityTime("2016/10/24");
-		activitydao.setMarkPrice("23.1");
+		ActivityBaseBean activitydao = new ActivityBaseBean();
+		activitydao.setActivity_id("321123");
+		activitydao.setActivity_name("长白山");
+		activitydao.setActivity_time("2016/10/24");
+		activitydao.setActivity_markPrice("23.1");
 		model.addAttribute("activity", activitydao);
 		return "/jsp/activity/ActivityInfo";
 	}
 	
 	@RequestMapping(value="/add_activity")
-	public String addActivityInfo(RedirectAttributes redirect,ActivityBaseDao from){
-		ActivityBaseDao dao = new ActivityBaseDao();
-		dao.setActivityName(from.getActivityName());
-		dao.setActivityTime(from.getActivityTime());
-		dao.setMarkPrice(from.getMarkPrice());
-		ActivityBaseDao newdao = activityserver.addActivity(dao);
-		redirect.addFlashAttribute("message", "save");
-		return "redirect:/activity_view/"+newdao.getActivityId();
+	public String addActivityInfo(RedirectAttributes redirect,ActivityBaseBean from){
+		ActivityBaseBean dao = new ActivityBaseBean();
+		dao.setActivity_name(from.getActivity_name());
+		dao.setActivity_time(from.getActivity_time());
+		dao.setActivity_markPrice(from.getActivity_markPrice());
+		ActivityBaseBean newdao = activityserver.addActivity(dao);
+		return "redirect:/activity_index";
+//		redirect.addFlashAttribute("message", "save");
+//		return "redirect:/activity_view/"+newdao.getActivity_id();
 	}
 	
 	@RequestMapping(value="/activity_view/{id}")
 	public String ActivityInfoView(@PathVariable String id,Model model){
-		ActivityBaseDao activitydao = activityserver.getActivity(id);
+		ActivityBaseBean activitydao = activityserver.getActivity(id);
 		model.addAttribute("activity", activitydao);
 		return "/jsp/activity/ActivityInfo";
 	}

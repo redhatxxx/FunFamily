@@ -10,15 +10,13 @@ import org.fun.web.dao.bean.UserBaseBean;
 
 public class UserBeanManager implements IUserBeanManager {
 
-	private Map usersMap = new HashMap();
-	
 	private IUserBaseDao  userdao;
 	
 	@Override
 	public UserBaseBean getUser(String userId) {
 		// TODO Auto-generated method stub
-		UserBaseBean userdao = (UserBaseBean)usersMap.get(userId);
-		return userdao;
+		UserBaseBean user = this.userdao.getUser(userId);
+		return user;
 	}
 
 	@Override
@@ -42,6 +40,12 @@ public class UserBeanManager implements IUserBeanManager {
 	public List<UserBaseBean> getUserList(List conditions) {
 		// TODO Auto-generated method stub
 		return this.userdao.getUserList(conditions);
+	}
+
+	@Override
+	public boolean updateUser(UserBaseBean user) {
+		// TODO Auto-generated method stub
+		return this.userdao.updateUser(user);
 	}
 
 }

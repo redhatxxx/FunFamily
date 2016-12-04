@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.fun.web.dao.bean.UserBaseBean;
 import org.fun.web.server.IUserBeanManager;
-import org.fun.web.server.UserAcionMethod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,8 +22,8 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping(value="/user")
 public class UserController{
 
-	@Autowired(required=true)
-	private UserAcionMethod usermethod;
+//	@Autowired(required=true)
+//	private UserAcionMethod usermethod;
 	
 	@Resource(name="usermanager")
 	private IUserBeanManager usermanager;
@@ -35,7 +34,7 @@ public class UserController{
 		usermanager.addUser(user);
 		model.addAttribute("username", user.getUser_name());
 		model.addAttribute("userid", user.getUser_id());
-		return "/jsp/user/welcomeuser";
+		return "redirect:/user/userlist";
 	}
 	
 	//用户登录
@@ -44,7 +43,7 @@ public class UserController{
 		String username = dao.getUser_name();
 		model.addAttribute("username", username);
 		return "/jsp/user/welcomeuser";
-	}
+	} 
 	
 	//保存编辑用户信息
 	@RequestMapping(value="/save_userinfo")
@@ -60,9 +59,12 @@ public class UserController{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		UserBaseBean user = usermethod.addUser(dao);
-		user.setSculptrue_path("upload" + imagename);
-		model.addAttribute("userinfo", user);
+//		UserBaseBean user = usermethod.addUser(dao);
+		dao.setSculptrue_path("upload" + imagename);
+		boolean flag = usermanager.updateUser(dao);
+		if(flag){
+			model.addAttribute("userinfo",usermanager.getUser(dao.getUser_id()));
+		}
 		return "/jsp/user/userinfo";
 	}
 	
@@ -94,8 +96,9 @@ public class UserController{
 	
 	//用户信息编辑页面
 	@RequestMapping(value="/edit_userinfo")
-	public String editUserInfo(Model model){
-		
+	public String editUserInfo(String userId,Model model){
+		UserBaseBean userbean = this.usermanager.getUser(userId);
+		model.addAttribute("userinfo", userbean);
 		return "/jsp/user/edituserinfo";
 	}
 	//用户登录页面

@@ -10,11 +10,11 @@
 <body>
 	<form action="add_activity" method="post">
 		<label for="name">activity_name: </label>
-		<input type="text" id="activityName" name="activityName" value="" tabindex="1">
+		<input type="text" id="activity_name" name="activity_name" value="" tabindex="1">
 		<label for="password">activity_time: </label>
-		<input type="text" id="activityTime" name="activityTime" value="" tabindex="1">
+		<input type="text" id="activity_time" name="activity_time" value="" tabindex="1">
 		<label for="price">activity_price: </label>
-		<input type="text" id="markPrice" name="markPrice" value="" tabindex="1">
+		<input type="text" id="activity_markPrice" name="activity_markPrice" value="" tabindex="1">
 		<div id="buttons">
 			<input type="submit" id="submit" tabindex="5" value="Login">
 		</div>
