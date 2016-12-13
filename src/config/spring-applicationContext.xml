@@ -12,6 +12,9 @@
 	<bean id="activityDao" class="org.fun.web.dao.ActivityBaseDao">
 		<property name="sessionfactory" ref="sessionFactory"></property>
 	</bean>
+	<bean id="groupDao" class="org.fun.web.dao.GroupBaseDao">
+		<property name="sessionfactory" ref="sessionFactory"></property>
+	</bean>
 	
 	<!-- server层配置 -->
 	<bean id="usermanagerbase" class="org.fun.web.server.UserBeanManager">
@@ -20,12 +23,18 @@
 	<bean id="activitymanagerbase" class="org.fun.web.server.ActivityBeanManager">
 		<property name="activitydao" ref="activityDao"></property>
 	</bean>
-
+	<bean id="groupmanagerbase" class="org.fun.web.server.GroupBeanManager">
+		<property name="groupdao" ref="groupDao"></property>
+	</bean>
+	
 	<!-- 继承事务配置 -->
 	<bean id="usermanager" parent="transactionbase">
 		<property name="target" ref="usermanagerbase"></property>
 	</bean>
 	<bean id="activitymanager" parent="transactionbase">
 		<property name="target" ref="activitymanagerbase"></property>
+	</bean>
+	<bean id="groupmanager" parent="transactionbase">
+		<property name="target" ref="groupmanagerbase"></property>
 	</bean>
 </beans>

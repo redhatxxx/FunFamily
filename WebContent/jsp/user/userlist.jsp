@@ -26,7 +26,7 @@
 				<tr>
 					<td>${user.user_name }</td>
 					<td>${user.user_id }</td>
-					<td><a href="/FunFamily/user/edit_userinfo?userId=${user.user_id}" onclick="/FunFamily/user/edit_userinfo?userId='${user.user_id}'">编辑</a></td>
+					<td><a href="/FunFamily/user/edit_userinfo?userId=${user.user_id}" onclick="">编辑</a></td>
 					<td><a href="javascript:void(0)" onclick="deleteuser('${user.user_id }')">删除</a></td>
 				</tr>
 			</c:forEach>

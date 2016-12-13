@@ -9,5 +9,6 @@ PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN"
   <session-factory>
     <mapping class="org.fun.web.dao.bean.UserBaseBean"/>
     <mapping class="org.fun.web.dao.bean.ActivityBaseBean"/>
+    <mapping class="org.fun.web.dao.bean.GroupBaseBean"/>
   </session-factory>
 </hibernate-configuration>

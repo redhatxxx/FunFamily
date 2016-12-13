@@ -3,15 +3,16 @@ package org.fun.web.server;
 import java.util.List;
 
 import org.fun.web.dao.ActivityBaseDao;
+import org.fun.web.dao.IActivityBaseDao;
 import org.fun.web.dao.bean.ActivityBaseBean;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ActivityBeanManager implements IActivityBeanManager{
 	
-	ActivityBaseDao activitydao;
+	private IActivityBaseDao activitydao;
 	
-	public ActivityBaseDao getActivitydao() {
+	public IActivityBaseDao getActivitydao() {
 		return activitydao;
 	}
 

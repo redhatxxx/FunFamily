@@ -7,6 +7,12 @@ import javax.persistence.Table;
 
 /**
  * 用户持久化类
+ * 用户详细信息
+ * 映射用户表SYS_FUN_USER
+ * 
+ * author by redhat;
+ * date 2016.12.12
+ * 
  * */
 @Entity
 @Table(name="SYS_FUN_USER")
@@ -92,6 +98,96 @@ public class UserBaseBean{
 	public void setUser_repassword(String user_repassword) {
 		this.user_repassword = user_repassword;
 	}
+	
+	@Column(name="user_nickname")
+	public String getUser_nickname() {
+		return user_nickname;
+	}
+
+	public void setUser_nickname(String user_nickname) {
+		this.user_nickname = user_nickname;
+	}
+
+	@Column(name="user_phone")
+	public String getUser_phone() {
+		return user_phone;
+	}
+
+	public void setUser_phone(String user_phone) {
+		this.user_phone = user_phone;
+	}
+
+	@Column(name="user_qq_number")
+	public String getUser_qq_number() {
+		return user_qq_number;
+	}
+
+	public void setUser_qq_number(String user_qq_number) {
+		this.user_qq_number = user_qq_number;
+	}
+
+	@Column(name="user_weixin_account")
+	public String getUser_weixin_account() {
+		return user_weixin_account;
+	}
+
+	public void setUser_weixin_account(String user_weixin_account) {
+		this.user_weixin_account = user_weixin_account;
+	}
+
+	@Column(name="user_real_name")
+	public String getUser_real_name() {
+		return user_real_name;
+	}
+
+	public void setUser_real_name(String user_real_name) {
+		this.user_real_name = user_real_name;
+	}
+
+	@Column(name="user_identity_number")
+	public String getUser_identity_number() {
+		return user_identity_number;
+	}
+
+	public void setUser_identity_number(String user_identity_number) {
+		this.user_identity_number = user_identity_number;
+	}
+
+	@Column(name="user_login_count")
+	public int getUser_login_count() {
+		return user_login_count;
+	}
+
+	public void setUser_login_count(int user_login_count) {
+		this.user_login_count = user_login_count;
+	}
+
+	@Column(name="user_status")
+	public int getUser_status() {
+		return user_status;
+	}
+
+	public void setUser_status(int user_status) {
+		this.user_status = user_status;
+	}
+
+	@Column(name="user_hold1")
+	public String getUser_hold1() {
+		return user_hold1;
+	}
+
+	public void setUser_hold1(String user_hold1) {
+		this.user_hold1 = user_hold1;
+	}
+
+	@Column(name="user_hold2")
+	public String getUser_hold2() {
+		return user_hold2;
+	}
+
+	public void setUser_hold2(String user_hold2) {
+		this.user_hold2 = user_hold2;
+	}
 
 	private String user_id;
 	
@@ -110,5 +206,25 @@ public class UserBaseBean{
 	private String user_last_login_time;
 	
 	private String sculptrue_path;
+
+	private String user_nickname;
+
+	private String user_phone;
+
+	private String user_qq_number;
+	
+	private String user_weixin_account;
+	
+	private String user_real_name;
+	
+	private String user_identity_number;
+	
+	private int user_login_count;
+	
+	private int user_status;
+	
+	private String user_hold1;
+	
+	private String user_hold2;
 	
 }
