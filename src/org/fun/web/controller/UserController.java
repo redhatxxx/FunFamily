@@ -39,10 +39,21 @@ public class UserController{
 	
 	//用户登录
 	@RequestMapping(value="/user_login")
-	public String userLogin(UserBaseBean dao,Model model){
+	public void userLogin(UserBaseBean dao,Model model,HttpServletResponse response){
 		String username = dao.getUser_name();
 		model.addAttribute("username", username);
-		return "/jsp/user/welcomeuser";
+		PrintWriter out = null;
+		response.setContentType("application/json");
+		String result = "{\"flag\":\"1\"}";
+		if(username==null){
+			result = "{\"flag\":\"0\"}";
+		}
+		try {
+			out = response.getWriter();
+			out.write(result);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	} 
 	
 	//保存编辑用户信息
@@ -113,7 +124,11 @@ public class UserController{
 		return "/jsp/user/userregister";
 	}
 	
-
+	//登录成功
+	@RequestMapping(value="/welcome")
+	public String loginSuccess(){
+		return "/jsp/user/welcomeuser";
+	} 
 	@RequestMapping(value="/testspring")
 	public String testSpring(Model model){
 		UserBaseBean user = new UserBaseBean();

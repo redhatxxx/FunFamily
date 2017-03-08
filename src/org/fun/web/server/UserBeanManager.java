@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.fun.web.common.AbstractEncryptFunction;
 import org.fun.web.common.AbstractUuidGenerate;
 import org.fun.web.dao.IUserBaseDao;
 import org.fun.web.dao.bean.UserBaseBean;
@@ -22,6 +23,8 @@ public class UserBeanManager implements IUserBeanManager {
 	@Override
 	public UserBaseBean addUser(UserBaseBean user) {
 		// TODO Auto-generated method stub
+		String ps = AbstractEncryptFunction.encryptUserPassword(user.getUser_password());
+		user.setUser_password(ps);
 		this.userdao.addUser(user);
 		return user;
 	}
