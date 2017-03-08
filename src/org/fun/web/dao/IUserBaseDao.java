@@ -1,6 +1,7 @@
 package org.fun.web.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.fun.web.dao.bean.UserBaseBean;
 
@@ -29,4 +30,9 @@ public interface IUserBaseDao {
 	 * 更新用户信息
 	 * */
 	boolean updateUser(UserBaseBean user);
+
+	/**
+	 * 	根据用户名密码登录
+	 * */
+	Map findUserWithResult(String username, String password);
 }

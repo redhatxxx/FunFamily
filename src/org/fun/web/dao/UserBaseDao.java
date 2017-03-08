@@ -1,6 +1,8 @@
 package org.fun.web.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.fun.web.common.AbstractUuidGenerate;
 import org.fun.web.dao.bean.UserBaseBean;
@@ -65,5 +67,25 @@ public class UserBaseDao implements IUserBaseDao{
 		query.setString(3, user.getUser_id());
 		
 		return (query.executeUpdate()>0);
+	}
+
+	@Override
+	public Map findUserWithResult(String username, String password) {
+		// TODO Auto-generated method stub
+		String gethql = "from UserBaseBean u where u.user_name = ? and u.user_password = ? ";
+		Query query = this.sessionfactory.getCurrentSession().createQuery(gethql);
+		query.setString(0, username);
+		query.setString(1, password);
+		List<UserBaseBean> res = query.list();
+		Map returndata = new HashMap();
+		if(res.size()<=0){
+			returndata.put("errormsg", "用户名或密码错误！");
+		}else{
+			String nickname = ((UserBaseBean)res.get(0)).getUser_nickname();
+			String user_id = ((UserBaseBean)res.get(0)).getUser_id();
+			returndata.put("nickname", nickname);
+			returndata.put("user_id", user_id);
+		}
+		return returndata;
 	}
 }

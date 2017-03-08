@@ -30,7 +30,7 @@
 <body>
 	<div align="right">
 		<label id="usertitle"></label> <a id="logout"
-			href="javascript:void(0)" onclick="logout()">注销</a> <a id="jumplogin"
+			href="javascript:void(0)" onclick="logoutdeletecookie()">注销</a> <a id="jumplogin"
 			href="javascript:void(0)" onclick="jumptologin()">登录</a> <a id="manager"
 			href="javascript:void(0)" onclick="jumpmanager()">管理员入口</a>
 	</div>

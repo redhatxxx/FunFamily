@@ -10,6 +10,7 @@
 </style>
 <script type="text/javascript" src="<c:url value="/jsfiles/userfun.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/jsfiles/jquery-3.1.1.min.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/jsfiles/cookieoperation.js"/>"></script>
 <title>Insert title here</title>
 </head>
 <body>

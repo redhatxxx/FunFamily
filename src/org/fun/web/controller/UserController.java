@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.fun.web.dao.bean.UserBaseBean;
 import org.fun.web.server.IUserBeanManager;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,12 +41,22 @@ public class UserController{
 	@RequestMapping(value="/user_login")
 	public void userLogin(UserBaseBean dao,Model model,HttpServletResponse response){
 		String username = dao.getUser_name();
-		model.addAttribute("username", username);
+		String password = dao.getUser_password();
+		Map loginresult = usermanager.findUserByNameAndPassWord(username,password);
+		Object errormsg = loginresult.get("errormsg");
+		
 		PrintWriter out = null;
 		response.setContentType("application/json");
-		String result = "{\"flag\":\"1\"}";
-		if(username==null){
-			result = "{\"flag\":\"0\"}";
+		String result = "";
+		if(errormsg!=null&&!errormsg.toString().equals("")){
+			result = "{\"flag\":\"0\",\"errormsg\":\""+errormsg.toString()+"\"}";
+		}else{
+			String showname = username;
+			if(loginresult.get("nickname")!=null&&
+					!loginresult.get("nickname").toString().equals(""))
+				showname = loginresult.get("nickname").toString();
+			String user_id = loginresult.get("user_id").toString();
+			result = "{\"flag\":\"1\",\"showname\":\""+showname+"\",\"user_id\":\""+user_id+"\"}";
 		}
 		try {
 			out = response.getWriter();

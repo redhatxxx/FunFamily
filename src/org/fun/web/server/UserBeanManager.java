@@ -51,4 +51,11 @@ public class UserBeanManager implements IUserBeanManager {
 		return this.userdao.updateUser(user);
 	}
 
+	@Override
+	public Map findUserByNameAndPassWord(String username,String password){
+		// TODO Auto-generated method stub
+		String ps = AbstractEncryptFunction.encryptUserPassword(password);
+		return this.userdao.findUserWithResult(username,password);
+	}
+
 }
