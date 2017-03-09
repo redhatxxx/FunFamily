@@ -17,6 +17,7 @@
 					//visibility不显示但占用位置会有空白
 					//document.getElementById("jumplogin").style.visibility="hidden";
 					document.getElementById("jumplogin").style.display="none";
+					document.getElementById("jumpregiste").style.display="none";
 				}
 				else{
 					document.getElementById("usertitle").innerHTML="游客";
@@ -29,10 +30,11 @@
 </head>
 <body>
 	<div align="right">
-		<label id="usertitle"></label> <a id="logout"
-			href="javascript:void(0)" onclick="logoutdeletecookie()">注销</a> <a id="jumplogin"
-			href="javascript:void(0)" onclick="jumptologin()">登录</a> <a id="manager"
-			href="javascript:void(0)" onclick="jumpmanager()">管理员入口</a>
+		<a id="usertitle" href="javascript:void(0)" onclick="jumptouserinfo()"></a> 
+		<a id="logout" href="javascript:void(0)" onclick="userlogout()">注销</a> 
+		<a id="jumplogin" href="javascript:void(0)" onclick="jumptologin()">登录</a> 
+		<a id="jumpregiste" href="javascript:void(0)" onclick="jumptoregister()">注册</a> 
+		<a id="manager"	href="javascript:void(0)" onclick="jumpmanager()">管理员入口</a>
 	</div>
 	<br>
 	<div align="center">

@@ -55,7 +55,7 @@ public class UserBeanManager implements IUserBeanManager {
 	public Map findUserByNameAndPassWord(String username,String password){
 		// TODO Auto-generated method stub
 		String ps = AbstractEncryptFunction.encryptUserPassword(password);
-		return this.userdao.findUserWithResult(username,password);
+		return this.userdao.findUserWithResult(username,ps);
 	}
 
 }

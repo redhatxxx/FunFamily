@@ -83,7 +83,10 @@ public class UserBaseDao implements IUserBaseDao{
 		}else{
 			String nickname = ((UserBaseBean)res.get(0)).getUser_nickname();
 			String user_id = ((UserBaseBean)res.get(0)).getUser_id();
-			returndata.put("nickname", nickname);
+			if(nickname!=null&&!(nickname.equals("")||nickname.equals("null")))
+				returndata.put("nickname", nickname);
+			else
+				returndata.put("nickname", username);
 			returndata.put("user_id", user_id);
 		}
 		return returndata;
