@@ -53,5 +53,7 @@ function userlogout(){
 
 function jumptouserinfo(){
 	var uuid = getCookie("fun_u_uuid");
+	var name = getCookie("username");
+	alert(name+uuid);
 	setTimeout("javascript:location.href='/FunFamily/user/edit_userinfo?userId="+uuid+"'", 0); 
 }

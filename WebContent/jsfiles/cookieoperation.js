@@ -10,13 +10,16 @@ function logoutdeletecookie(param){
 	delCookie(param);
 }
 function loginaddcookie(paramarry){
+	alert(paramarry.showname+paramarry.user_id);
 	addcookie("username",paramarry.showname,0);
 	addcookie("fun_u_uuid",paramarry.user_id,0);
 	//window.open("http://127.0.0.1:8020/WebPractice/index.html");
+	alert(getCookie("username")+getCookie("fun_u_uuid"));
 }
 //添加cookie
 function addcookie(paraname,paravalue,parahour){
 	var str = paraname+"="+escape(paravalue);
+	alert(str);
 	if(parahour>0){
 		var date = new Date();
 		var ms = parahour*3600*1000;
