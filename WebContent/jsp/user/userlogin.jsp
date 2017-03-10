@@ -14,7 +14,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<!--<form action="user_login" method="post">
+	<div id="message_area">
+	<c:if test="${sessionScope.flag==0 }">
+		<label color="red" id="login_message">${sessionScope.errormsg }</label>
+	</c:if>
+	<br>
+	</div>
+	<form action="user_login" method="post">
 		<label for="name">Name: </label>
 		<input type="text" id="user_name" name="user_name" value="" tabindex="1">
 		<label for="password">PassWord: </label>
@@ -22,12 +28,8 @@
 		<div id="buttons">
 			<input type="submit" id="submit" tabindex="5" value="Login">
 		</div>
-	</form>  -->
-	<div id="message_area">
-	<label color="red" id="login_message"></label>
-	<br>
-	</div>
-	<form name="loginform" id="loginform">
+	</form>
+	<!-- <form name="loginform" id="loginform">
 		<label for="name">Name: </label>
 		<input type="text" id="user_name" name="user_name" value="" tabindex="1">
 		<label for="password">PassWord: </label>
@@ -35,6 +37,6 @@
 		<div id="buttons">
 			<input type="button" id="submit" tabindex="5" value="Login" onclick="submituser()">
 		</div>
-	</form>
+	</form> -->
 </body>
 </html>

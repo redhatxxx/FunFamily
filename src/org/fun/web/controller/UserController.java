@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.fun.web.dao.bean.UserBaseBean;
 import org.fun.web.server.IUserBeanManager;
@@ -39,33 +40,42 @@ public class UserController{
 	
 	//用户登录
 	@RequestMapping(value="/user_login")
-	public void userLogin(UserBaseBean dao,Model model,HttpServletResponse response){
+	public String userLogin(UserBaseBean dao,Model model,HttpSession httpSession){
 		String username = dao.getUser_name();
 		String password = dao.getUser_password();
 		Map loginresult = usermanager.findUserByNameAndPassWord(username,password);
-		Object errormsg = loginresult.get("errormsg");
 		
-		PrintWriter out = null;
-		response.setContentType("application/json");
-		String result = "";
+		Object errormsg = loginresult.get("errormsg");
 		if(errormsg!=null&&!errormsg.toString().equals("")){
-			result = "{\"flag\":\"0\",\"errormsg\":\""+errormsg.toString()+"\"}";
+			httpSession.setAttribute("flag", "0");
+			httpSession.setAttribute("errormsg", errormsg.toString());
+			return "/jsp/user/userlogin";
 		}else{
 			String showname = username;
 			if(loginresult.get("nickname")!=null&&
 					!loginresult.get("nickname").toString().equals(""))
 				showname = loginresult.get("nickname").toString();
 			String user_id = loginresult.get("user_id").toString();
-			result = "{\"flag\":\"1\",\"showname\":\""+showname+"\",\"user_id\":\""+user_id+"\"}";
+			httpSession.setAttribute("flag", "1");
+			httpSession.setAttribute("user_id", user_id);
+			httpSession.setAttribute("showname", showname);
+			
+			return "redirect:/index";
 		}
-		try {
-			out = response.getWriter();
-			out.write(result);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+
+
 	} 
 	
+	//用户登出
+	@RequestMapping(value="/user_logout")
+	public String userLogout(Model model,HttpSession httpSession){
+		httpSession.setAttribute("flag", "0");
+		httpSession.removeAttribute("flag");
+		httpSession.removeAttribute("user_id");
+		httpSession.removeAttribute("showname");
+		System.out.println("1");
+		return "redirect:/index";
+	} 
 	//保存编辑用户信息
 	@RequestMapping(value="/save_userinfo")
 	public String saveUserInfo(@RequestParam("usersculpture") MultipartFile usersculpture,UserBaseBean dao,Model model,HttpServletRequest request){

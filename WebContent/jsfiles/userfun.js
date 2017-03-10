@@ -24,31 +24,16 @@ function deleteuser(id){
 function submituser(){
 	var param = $("#loginform").serializeArray();
 	$.ajax({
-		type: "GET",
+		type: "post",
 		url:"/FunFamily/user/user_login",
-		data:param,
-		success: function(data){
-			if(data.flag=="1"){
-				loginaddcookie(data);
-				setTimeout("javascript:location.href='/FunFamily/index'", 0); 
-			}
-			else{
-				document.getElementById("login_message").style.color="red";
-				document.getElementById("login_message").innerHTML=data.errormsg;
-			}
-		},
-		error:function(data){
-			if(data.flag=="1")
-				setTimeout("javascript:location.href='/FunFamily/user/welcome'", 0); 
-			else
-				$("#login_message").innerHTML="XXXXXX";
-		}
+		data:param
 	});
 }
 function userlogout(){
 	logoutdeletecookie("username");
 	logoutdeletecookie("fun_u_uuid");
-	window.location.reload(true);
+	setTimeout("javascript:location.href='/FunFamily/user/user_logout'", 0); 
+	//window.location.href="/FunFamily/user/user_logout";  
 }
 
 function jumptouserinfo(){

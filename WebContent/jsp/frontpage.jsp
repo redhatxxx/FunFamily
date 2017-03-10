@@ -11,30 +11,31 @@
 	<script type="text/javascript" src="<c:url value="/jsfiles/userfun.js"/>"></script>
 	<script>
 		window.onload = function(){
-			var username = getCookie("username");
-				if(username!=""&&username!="null"){
-					document.getElementById("usertitle").innerHTML=username;
-					//visibility不显示但占用位置会有空白
-					//document.getElementById("jumplogin").style.visibility="hidden";
-					document.getElementById("jumplogin").style.display="none";
-					document.getElementById("jumpregiste").style.display="none";
-				}
-				else{
-					document.getElementById("usertitle").innerHTML="游客";
-					//document.getElementById("logout").style.visibility="hidden";
-					document.getElementById("logout").style.display="none";
-				}
-				document.getElementById("manager").style.display="none";
+			var uuid = document.getElementById("uu_id").value;
+			if(uuid!=null&&uuid!=""){
+				var cookievalue = getCookie("fun_u_uuid");
+				if(cookievalue!=null)
+					addcookie("fun_u_uuid",uuid,0);
+			}
 		}
 		</script>
 </head>
 <body>
+	<div name="hiddenarea">
+		<input type="hidden" id="uu_id" name="uu_id" value="${sessionScope.user_id }"> 
+	</div>
 	<div align="right">
-		<a id="usertitle" href="javascript:void(0)" onclick="jumptouserinfo()"></a> 
-		<a id="logout" href="javascript:void(0)" onclick="userlogout()">注销</a> 
-		<a id="jumplogin" href="javascript:void(0)" onclick="jumptologin()">登录</a> 
-		<a id="jumpregiste" href="javascript:void(0)" onclick="jumptoregister()">注册</a> 
-		<a id="manager"	href="javascript:void(0)" onclick="jumpmanager()">管理员入口</a>
+		<c:if test="${sessionScope.flag!=1 }">
+			<a id="usertitle" href="javascript:void(0)" onclick="jumptouserinfo()">游客</a> 
+			<a id="jumplogin" href="javascript:void(0)" onclick="jumptologin()">登录</a> 
+			<a id="jumpregiste" href="javascript:void(0)" onclick="jumptoregister()">注册</a> 
+		</c:if>
+		<c:if test="${sessionScope.flag==1 }">
+			<a id="usertitle" href="javascript:void(0)" onclick="jumptouserinfo()">${sessionScope.showname }</a> 
+			<a id="logout" href="javascript:void(0)" onclick="userlogout()">注销</a> 
+			<a id="manager"	href="javascript:void(0)" onclick="jumpmanager()">管理员入口</a>
+		</c:if>
+		
 	</div>
 	<br>
 	<div align="center">

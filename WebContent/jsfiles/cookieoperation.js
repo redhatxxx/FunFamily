@@ -33,7 +33,7 @@ function getCookie(paraname){
 		if(tmp[0]==paraname)
 			return unescape(tmp[1]);
 	}
-	return "null";
+	return null;
 }
 //删除cookie;将指定名称的cookie的过期时间设置为已过去的时间，使其过期
 function delCookie(paraname){
