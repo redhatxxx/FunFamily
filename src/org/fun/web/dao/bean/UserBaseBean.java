@@ -91,14 +91,6 @@ public class UserBaseBean{
 		this.user_id = user_id;
 	}
 	
-	public String getUser_repassword() {
-		return user_repassword;
-	}
-
-	public void setUser_repassword(String user_repassword) {
-		this.user_repassword = user_repassword;
-	}
-	
 	@Column(name="user_nickname")
 	public String getUser_nickname() {
 		return user_nickname;
@@ -194,8 +186,6 @@ public class UserBaseBean{
 	private String user_name;
 	
 	private String user_password;
-	
-	private String user_repassword;
 
 	private int user_sex;
 	

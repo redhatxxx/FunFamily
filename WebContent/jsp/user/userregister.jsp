@@ -5,18 +5,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>用户注册</title>
+<script type="text/javascript" src="<c:url value="/jsfiles/jquery-3.1.1.min.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/jsfiles/userfun.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/jsfiles/checkinfo.js"/>"></script>
 </head>
 <body>
-	<form action="user_register" method="post">
+	<form action="user_register" method="post" id="userregisterform">
 		<label for="name">Name: </label>
 		<input type="text" id="user_name" name="user_name" value="" tabindex="1">
 		<label for="password">PassWord: </label>
-		<input type="text" id="user_password" name="user_password" value="" tabindex="1">
+		<input type="password" id="user_password" name="user_password" value="" tabindex="1">
 		<label for="password">RePassWord: </label>
-		<input type="text" id="user_repassword" name="user_repassword" value="" tabindex="1">
+		<input type="password" id="user_repassword" name="user_repassword" value="" tabindex="1">
 		<div id="buttons">
-			<input type="submit" id="submit" tabindex="5" value="Register">
+			<input type="button" id="checkinfo" tabindex="5" onclick="userregister()" value ="注册">
+			
 		</div>
 	</form>
 </body>

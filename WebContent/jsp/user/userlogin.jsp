@@ -16,7 +16,7 @@
 <body>
 	<div id="message_area">
 	<c:if test="${sessionScope.flag==0 }">
-		<label color="red" id="login_message">${sessionScope.errormsg }</label>
+		<label style="color:red" id="login_message">${sessionScope.errormsg }</label>
 	</c:if>
 	<br>
 	</div>
@@ -24,7 +24,7 @@
 		<label for="name">Name: </label>
 		<input type="text" id="user_name" name="user_name" value="" tabindex="1">
 		<label for="password">PassWord: </label>
-		<input type="text" id="user_password" name="user_password" value="" tabindex="1">
+		<input type="password" id="user_password" name="user_password" value="" tabindex="1">
 		<div id="buttons">
 			<input type="submit" id="submit" tabindex="5" value="Login">
 		</div>

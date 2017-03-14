@@ -10,6 +10,7 @@ function jumptoregister(){
 	//window.location.href='/FunFamily/user/login';
 	setTimeout("javascript:location.href='/FunFamily/user/register'", 0); 
 }
+//删除用户
 function deleteuser(id){
 	$.get("/FunFamily/user/deleteuser?userId="+id,function(result){
 		if(result.flag=="1"){
@@ -20,6 +21,10 @@ function deleteuser(id){
 		}
 	});
 }
+//用户注册
+function userregister(){
+	document.getElementById("userregisterform").submit();
+}
 //用户登录
 function submituser(){
 	var param = $("#loginform").serializeArray();
@@ -29,6 +34,7 @@ function submituser(){
 		data:param
 	});
 }
+//用户登出
 function userlogout(){
 	logoutdeletecookie("username");
 	logoutdeletecookie("fun_u_uuid");
