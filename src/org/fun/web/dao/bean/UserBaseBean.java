@@ -1,9 +1,13 @@
 package org.fun.web.dao.bean;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * 用户持久化类
@@ -64,20 +68,22 @@ public class UserBaseBean{
 	}
 
 	@Column(name="user_regist_time")
-	public String getUser_regist_time() {
+	@Temporal(TemporalType.TIMESTAMP)
+	public java.util.Date getUser_regist_time() {
 		return user_regist_time;
 	}
 
-	public void setUser_regist_time(String user_regist_time) {
+	public void setUser_regist_time(java.util.Date  user_regist_time) {
 		this.user_regist_time = user_regist_time;
 	}
 
-	@Column(name="user_last_login_time")
-	public String getUser_last_login_time() {
+	@Column(name="user_last_login_time",length=50)
+	@Temporal(TemporalType.TIMESTAMP)
+	public java.util.Date getUser_last_login_time() {
 		return user_last_login_time;
 	}
 
-	public void setUser_last_login_time(String user_last_login_time) {
+	public void setUser_last_login_time(java.util.Date user_last_login_time) {
 		this.user_last_login_time = user_last_login_time;
 	}
 
@@ -191,9 +197,9 @@ public class UserBaseBean{
 	
 	private String user_email;
 	
-	private String user_regist_time;
+	private Date user_regist_time;
 	
-	private String user_last_login_time;
+	private Date user_last_login_time;
 	
 	private String sculptrue_path;
 

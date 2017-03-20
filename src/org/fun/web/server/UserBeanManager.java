@@ -58,4 +58,11 @@ public class UserBeanManager implements IUserBeanManager {
 		return this.userdao.findUserWithResult(username,ps);
 	}
 
+	@Override
+	public boolean checkUserName(String user_name) {
+		// TODO Auto-generated method stub
+		boolean flag = userdao.checkUserName(user_name);
+		return flag;
+	}
+
 }

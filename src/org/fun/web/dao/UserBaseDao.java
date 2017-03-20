@@ -1,9 +1,12 @@
 package org.fun.web.dao;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.fun.web.common.AbstractCommonFunction;
 import org.fun.web.common.AbstractUuidGenerate;
 import org.fun.web.dao.bean.UserBaseBean;
 import org.hibernate.Query;
@@ -27,6 +30,7 @@ public class UserBaseDao implements IUserBaseDao{
 		// TODO Auto-generated method stub
 		String uuid = AbstractUuidGenerate.getUUID();
 		user.setUser_id(uuid);
+		user.setUser_regist_time(AbstractCommonFunction.getNowTimeDate());
 		sessionfactory.getCurrentSession().save(user);
 		return user;
 	}
@@ -81,14 +85,45 @@ public class UserBaseDao implements IUserBaseDao{
 		if(res.size()<=0){
 			returndata.put("errormsg", "用户名或密码错误！");
 		}else{
-			String nickname = ((UserBaseBean)res.get(0)).getUser_nickname();
-			String user_id = ((UserBaseBean)res.get(0)).getUser_id();
+			UserBaseBean loginuser = (UserBaseBean)res.get(0);
+			String nickname = loginuser.getUser_nickname();
+			String user_id = loginuser.getUser_id();
+			int logincount = loginuser.getUser_login_count();
 			if(nickname!=null&&!(nickname.equals("")||nickname.equals("null")))
 				returndata.put("nickname", nickname);
 			else
 				returndata.put("nickname", username);
 			returndata.put("user_id", user_id);
+			loginuser.setUser_login_count(logincount+1);
+			loginuser.setUser_last_login_time(AbstractCommonFunction.getNowTimeDate());
+			updatUserLoginInfo(loginuser);
 		}
 		return returndata;
+	}
+
+	/**
+	 * 用户登录更新用户信息
+	 * */
+	private boolean updatUserLoginInfo(UserBaseBean loginuser) {
+		// TODO Auto-generated method stub
+		String updatehql = "update UserBaseBean u set u.user_login_count =? , u.user_last_login_time=? where u.user_id = ?";
+		Query query = this.sessionfactory.getCurrentSession().createQuery(updatehql);
+		query.setString(0, String.valueOf(loginuser.getUser_login_count()));
+		query.setTimestamp(1, loginuser.getUser_last_login_time());
+		query.setString(2, loginuser.getUser_id());
+		return (query.executeUpdate()>0);
+	}
+
+	@Override
+	public boolean checkUserName(String user_name) {
+		// TODO Auto-generated method stub
+		String gethql = "from UserBaseBean u where u.user_name = ?";
+		Query query = this.sessionfactory.getCurrentSession().createQuery(gethql);
+		query.setString(0, user_name);
+		List<UserBaseBean> res = query.list();
+		if(res==null||res.size()==0)
+			return false;
+		else
+			return true;
 	}
 }

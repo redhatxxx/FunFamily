@@ -18,8 +18,6 @@
 		<input type="text" id="user_name" name="user_name" value="${userinfo.user_name }" tabindex="1">
 		<label for="password">PassWord: </label>
 		<input type="text" id="user_password" name="user_password" value="${userinfo.user_password }" tabindex="1">
-		<label for="password">RePassWord: </label>
-		<input type="text" id="user_repassword" name="user_repassword" value="${userinfo.user_repassword }" tabindex="1">
 		<label for="file">用户头像: </label>：
 		<input type="file" id="usersculpture" name="usersculpture"/>
 		<div id="buttons">

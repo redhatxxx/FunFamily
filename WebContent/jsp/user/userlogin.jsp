@@ -9,6 +9,7 @@
 	@import url("<c:url value="/css/basestyle.css"/>");
 </style>
 <script type="text/javascript" src="<c:url value="/jsfiles/userfun.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/jsfiles/checkinfo.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/jsfiles/jquery-3.1.1.min.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/jsfiles/cookieoperation.js"/>"></script>
 <title>Insert title here</title>
@@ -20,13 +21,13 @@
 	</c:if>
 	<br>
 	</div>
-	<form action="user_login" method="post">
+	<form action="user_login" method="post" id="userloginform">
 		<label for="name">Name: </label>
 		<input type="text" id="user_name" name="user_name" value="" tabindex="1">
 		<label for="password">PassWord: </label>
 		<input type="password" id="user_password" name="user_password" value="" tabindex="1">
 		<div id="buttons">
-			<input type="submit" id="submit" tabindex="5" value="Login">
+			<input type="button" id="submit_login" tabindex="5" onclick="user_login()" value="Login">
 		</div>
 	</form>
 	<!-- <form name="loginform" id="loginform">

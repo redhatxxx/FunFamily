@@ -11,11 +11,21 @@
 <script type="text/javascript" src="<c:url value="/jsfiles/checkinfo.js"/>"></script>
 </head>
 <body>
+	<div id="message_area">
+	<c:if test="${sessionScope.unique_user_flag==0 }">
+		<label style="color:red" id="register_message">${sessionScope.errormsg }</label>
+	</c:if>
+	<br>
+	</div>
 	<form action="user_register" method="post" id="userregisterform">
 		<label for="name">Name: </label>
 		<input type="text" id="user_name" name="user_name" value="" tabindex="1">
+		<label id="name_warnmsg" style="color:red"></label>
+		<br>
 		<label for="password">PassWord: </label>
 		<input type="password" id="user_password" name="user_password" value="" tabindex="1">
+		<label id="password_warnmsg" style="color:red"></label>
+		<br>
 		<label for="password">RePassWord: </label>
 		<input type="password" id="user_repassword" name="user_repassword" value="" tabindex="1">
 		<div id="buttons">

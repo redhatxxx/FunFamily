@@ -35,4 +35,9 @@ public interface IUserBeanManager {
 	 * 	根据用户名密码登录
 	 * */
 	Map findUserByNameAndPassWord(String username,String password);
+
+	/**
+	 * 	检查用户名是否已存在
+	 * */
+	boolean checkUserName(String user_name);
 }

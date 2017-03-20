@@ -35,4 +35,9 @@ public interface IUserBaseDao {
 	 * 	根据用户名密码登录
 	 * */
 	Map findUserWithResult(String username, String password);
+
+	/**
+	 * 	检查用户名是否存在
+	 * */
+	boolean checkUserName(String user_name);
 }

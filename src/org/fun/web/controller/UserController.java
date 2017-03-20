@@ -31,11 +31,14 @@ public class UserController{
 	
 	//注册用户
 	@RequestMapping(value="/user_register")
-	public String addUser(UserBaseBean user,Model model){
+	public String addUser(UserBaseBean user,Model model,HttpSession httpSession){
+		if(usermanager.checkUserName(user.getUser_name())){
+			httpSession.setAttribute("unique_user_flag", "0");
+			httpSession.setAttribute("errormsg", "用户名已存在！");
+			return "/jsp/user/userregister";
+		}
 		usermanager.addUser(user);
-		model.addAttribute("username", user.getUser_name());
-		model.addAttribute("userid", user.getUser_id());
-		return "redirect:/user/userlist";
+		return "redirect:/index";
 	}
 	
 	//用户登录
