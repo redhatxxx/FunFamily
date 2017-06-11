@@ -40,4 +40,9 @@ public interface IUserBaseDao {
 	 * 	检查用户名是否存在
 	 * */
 	boolean checkUserName(String user_name);
+
+	/**
+	 * 	根据用户ID更新头像
+	 * */
+	boolean updateUsersculpture(String user_id, String sculpturepath);
 }

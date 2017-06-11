@@ -65,4 +65,11 @@ public class UserBeanManager implements IUserBeanManager {
 		return flag;
 	}
 
+	@Override
+	public boolean updateUsersculpture(String user_id, String sculpturepath) {
+		// TODO Auto-generated method stub
+		boolean flag = userdao.updateUsersculpture(user_id,sculpturepath);
+		return flag;
+	}
+
 }

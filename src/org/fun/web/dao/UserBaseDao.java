@@ -63,12 +63,14 @@ public class UserBaseDao implements IUserBaseDao{
 	@Override
 	public boolean updateUser(UserBaseBean user) {
 		// TODO Auto-generated method stub
-		String updatehql = "update UserBaseBean u set u.user_name =? , u.user_password=? , u.sculptrue_path=? where u.user_id = ?";
+		String updatehql = "update UserBaseBean u set u.user_nickname =? , u.user_sex=?,u.user_qq_number=?"
+				+ " ,u.user_weixin_account=? where u.user_id = ?";
 		Query query = this.sessionfactory.getCurrentSession().createQuery(updatehql);
-		query.setString(0, user.getUser_name());
-		query.setString(1, user.getUser_password());
-		query.setString(2, user.getSculptrue_path());
-		query.setString(3, user.getUser_id());
+		query.setString(0, user.getUser_nickname());
+		query.setInteger(1, user.getUser_sex());
+		query.setString(2, user.getUser_qq_number());
+		query.setString(3, user.getUser_weixin_account());
+		query.setString(4, user.getUser_id());
 		
 		return (query.executeUpdate()>0);
 	}
@@ -125,5 +127,15 @@ public class UserBaseDao implements IUserBaseDao{
 			return false;
 		else
 			return true;
+	}
+
+	@Override
+	public boolean updateUsersculpture(String user_id, String sculpturepath) {
+		// TODO Auto-generated method stub
+		String updatehql = "update UserBaseBean u set  u.sculptrue_path=? where u.user_id = ?";
+		Query query = this.sessionfactory.getCurrentSession().createQuery(updatehql);
+		query.setString(0, sculpturepath);
+		query.setString(1, user_id);
+		return (query.executeUpdate()>0);
 	}
 }

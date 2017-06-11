@@ -30,14 +30,5 @@
 			<input type="button" id="submit_login" tabindex="5" onclick="user_login()" value="Login">
 		</div>
 	</form>
-	<!-- <form name="loginform" id="loginform">
-		<label for="name">Name: </label>
-		<input type="text" id="user_name" name="user_name" value="" tabindex="1">
-		<label for="password">PassWord: </label>
-		<input type="text" id="user_password" name="user_password" value="" tabindex="1">
-		<div id="buttons">
-			<input type="button" id="submit" tabindex="5" value="Login" onclick="submituser()">
-		</div>
-	</form> -->
 </body>
 </html>

@@ -77,6 +77,9 @@ function userlogout(){
 }
 
 function jumptouserinfo(){
-	var uuid = getCookie("fun_u_uuid");
-	setTimeout("javascript:location.href='/FunFamily/user/edit_userinfo?userId="+uuid+"'", 0); 
+	setTimeout("javascript:location.href='/FunFamily/user/edit_userinfo'", 0); 
+}
+//跳转至编辑用户头像
+function jumptoeidtpic(){
+	setTimeout("javascript:location.href='/FunFamily/user/jumpuserpic'", 0); 
 }

@@ -80,8 +80,8 @@ public class UserController{
 		return "redirect:/index";
 	} 
 	//保存编辑用户信息
-	@RequestMapping(value="/save_userinfo")
-	public String saveUserInfo(@RequestParam("usersculpture") MultipartFile usersculpture,UserBaseBean dao,Model model,HttpServletRequest request){
+	@RequestMapping(value="/upload_sculpture")
+	public String uploadUserSculpture(@RequestParam("usersculpture") MultipartFile usersculpture,Model model,HttpServletRequest request,HttpSession httpSession){
 		String imagename = usersculpture.getOriginalFilename();
 		File savefile = new File(request.getServletContext().getRealPath("/images"), "upload" + imagename);
 		try {
@@ -94,14 +94,30 @@ public class UserController{
 			e.printStackTrace();
 		}
 //		UserBaseBean user = usermethod.addUser(dao);
-		dao.setSculptrue_path("upload" + imagename);
-		boolean flag = usermanager.updateUser(dao);
-		if(flag){
-			model.addAttribute("userinfo",usermanager.getUser(dao.getUser_id()));
+		Object user_id = httpSession.getAttribute("user_id");
+		if(user_id==null){
+			
+		}else{
+			boolean flag = usermanager.updateUsersculpture(user_id.toString(),"upload" + imagename);
+			if(flag){
+				model.addAttribute("userinfo",usermanager.getUser(user_id.toString()));
+			}
 		}
+
 		return "/jsp/user/userinfo";
 	}
 	
+	//保存编辑用户信息
+	@RequestMapping(value="/save_userinfo")
+	public String saveUserInfo(UserBaseBean dao,Model model,HttpSession httpSession){
+		boolean flag = usermanager.updateUser(dao);
+		if(flag){
+			return "redirect:/user/s_userinfo";
+		}else{
+			httpSession.setAttribute("errormsg", "保存失败！");
+			return "redirect:/user/edit_userinfo";
+		}
+	}	
 	//用户列表
 	@RequestMapping(value="/deleteuser")
 	public void deleteUserById(String userId,HttpServletResponse response){
@@ -130,9 +146,19 @@ public class UserController{
 	
 	//用户信息编辑页面
 	@RequestMapping(value="/edit_userinfo")
-	public String editUserInfo(String userId,Model model){
-		UserBaseBean userbean = this.usermanager.getUser(userId);
-		model.addAttribute("userinfo", userbean);
+	public String editUserInfo(Model model,HttpSession httpSession){
+		Object user_id = httpSession.getAttribute("user_id");
+		if(user_id==null){
+			
+		}else{
+			//编辑用户信息保存出错的报错信息
+			Object msg = httpSession.getAttribute("errormsg");
+			if(msg!=null){
+				model.addAttribute("editerrormsg", msg.toString());	
+			}
+			UserBaseBean userbean = this.usermanager.getUser(user_id.toString());
+			model.addAttribute("userinfo", userbean);	
+		}
 		return "/jsp/user/edituserinfo";
 	}
 	//用户登录页面
@@ -140,13 +166,36 @@ public class UserController{
 	public String loginView(){
 		return "/jsp/user/userlogin";
 	}
+	//用户注册页面
+	@RequestMapping(value="/s_userinfo")
+	public String showUserInfoView(Model model,HttpSession httpSession){
+		Object user_id = httpSession.getAttribute("user_id");
+		if(user_id==null){
+			
+		}else{
+			UserBaseBean userbean = this.usermanager.getUser(user_id.toString());
+			model.addAttribute("userinfo", userbean);	
+		}
+		return "/jsp/user/userinfo";
+	}
 	
 	//用户注册页面
 	@RequestMapping(value="/register")
 	public String registerView(){
 		return "/jsp/user/userregister";
 	}
-	
+	//用户选择图片页面
+	@RequestMapping(value="/jumpuserpic")
+	public String jumpToEidtUserPic(Model model,HttpSession httpSession){
+		Object user_id = httpSession.getAttribute("user_id");
+		if(user_id==null){
+			
+		}else{
+			UserBaseBean userbean = usermanager.getUser(user_id.toString());
+			model.addAttribute("userinfo", userbean);
+		}
+		return "/jsp/user/uploadusersculpture";
+	}
 	//登录成功
 	@RequestMapping(value="/welcome")
 	public String loginSuccess(){

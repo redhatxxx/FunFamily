@@ -33,7 +33,9 @@
 		<c:if test="${sessionScope.flag==1 }">
 			<a id="usertitle" href="javascript:void(0)" onclick="jumptouserinfo()">${sessionScope.showname }</a> 
 			<a id="logout" href="javascript:void(0)" onclick="userlogout()">注销</a> 
-			<a id="manager"	href="javascript:void(0)" onclick="jumpmanager()">管理员入口</a>
+			<c:if test="${sessionScope.managerflag==1 }">
+				<a id="manager"	href="javascript:void(0)" onclick="jumpmanager()">管理员入口</a>
+			</c:if>
 		</c:if>
 		
 	</div>

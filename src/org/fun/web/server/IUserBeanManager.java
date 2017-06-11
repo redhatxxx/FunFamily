@@ -40,4 +40,9 @@ public interface IUserBeanManager {
 	 * 	检查用户名是否已存在
 	 * */
 	boolean checkUserName(String user_name);
+
+	/**
+	 * 	根据用户ID更新头像
+	 * */
+	boolean updateUsersculpture(String user_id, String sculpturepath);
 }

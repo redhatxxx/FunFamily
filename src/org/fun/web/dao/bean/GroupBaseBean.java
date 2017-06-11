@@ -1,11 +1,15 @@
 package org.fun.web.dao.bean;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * 团队持久化类
@@ -22,7 +26,7 @@ public class GroupBaseBean {
 	
 	private UserBaseBean group_leader;
 	
-	private String group_create_time;
+	private Date group_create_time;
 	
 	private int group_activity_count;
 		
@@ -77,12 +81,13 @@ public class GroupBaseBean {
 		this.group_leader = group_leader;
 	}
 
-	@Column(name="group_create_time")
-	public String getGroup_create_time() {
+	@Column(name="group_create_time",length=50)
+	@Temporal(TemporalType.TIMESTAMP)
+	public Date getGroup_create_time() {
 		return group_create_time;
 	}
 
-	public void setGroup_create_time(String group_create_time) {
+	public void setGroup_create_time(Date group_create_time) {
 		this.group_create_time = group_create_time;
 	}
 
