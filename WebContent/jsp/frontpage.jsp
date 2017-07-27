@@ -14,8 +14,13 @@
 			var uuid = document.getElementById("uu_id").value;
 			if(uuid!=null&&uuid!=""){
 				var cookievalue = getCookie("fun_u_uuid");
-				if(cookievalue!=null)
+				if(cookievalue==null){
 					addcookie("fun_u_uuid",uuid,0);
+				}
+			}else{
+				var cookievalue = getCookie("fun_u_uuid");
+				if(cookievalue!=null)
+					loginwithuuid(cookievalue);
 			}
 		}
 		</script>

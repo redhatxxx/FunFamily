@@ -15,6 +15,7 @@ import org.fun.web.dao.bean.UserBaseBean;
 import org.fun.web.server.IUserBeanManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -68,7 +69,27 @@ public class UserController{
 
 
 	} 
-	
+
+	//用户登录
+	@RequestMapping(value="/loginwithuuid")
+	public String loginwithuuid(String uuid,Model model,HttpSession httpSession){
+		System.out.println("uuid:"+uuid);
+		UserBaseBean userbean = usermanager.getUser(uuid);
+		
+		if(userbean==null){
+			
+		}else{
+			String showname = userbean.getUser_name();
+			String nickname = userbean.getUser_nickname();
+			if(nickname!=null&&!nickname.equals(""))
+				showname = nickname;
+			String user_id = userbean.getUser_id();
+			httpSession.setAttribute("flag", "1");
+			httpSession.setAttribute("user_id", user_id);
+			httpSession.setAttribute("showname", showname);
+		}
+		return "redirect:/index";
+	} 
 	//用户登出
 	@RequestMapping(value="/user_logout")
 	public String userLogout(Model model,HttpSession httpSession){

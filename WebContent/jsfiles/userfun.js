@@ -83,3 +83,8 @@ function jumptouserinfo(){
 function jumptoeidtpic(){
 	setTimeout("javascript:location.href='/FunFamily/user/jumpuserpic'", 0); 
 }
+
+function loginwithuuid(uuid){
+	setTimeout(window.location.href='/FunFamily/user/loginwithuuid?uuid='+uuid, 0);
+//	setTimeout("javascript:location.href='/FunFamily/user/loginwithuuid?uuid='"+uuid, 0); 
+}
