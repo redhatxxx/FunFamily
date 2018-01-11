@@ -9,6 +9,7 @@
 	<script type="text/javascript" src="<c:url value="/jsfiles/jquery-3.1.1.min.js"/>"></script>
 	<script type="text/javascript" src="<c:url value="/jsfiles/cookieoperation.js"/>"></script>
 	<script type="text/javascript" src="<c:url value="/jsfiles/userfun.js"/>"></script>
+	<script type="text/javascript" src="<c:url value="/jsfiles/commonfun.js"/>"></script>
 	<script>
 		window.onload = function(){
 			var uuid = document.getElementById("uu_id").value;
@@ -28,8 +29,9 @@
 <body>
 	<div name="hiddenarea">
 		<input type="hidden" id="uu_id" name="uu_id" value="${sessionScope.user_id }"> 
-	</div>
+	</div>	
 	<div align="right">
+		<a href="javascript:void(0)" onclick="jumptohomepage()">首页</a>
 		<c:if test="${sessionScope.flag!=1 }">
 			<a id="usertitle" href="javascript:void(0)" onclick="jumptouserinfo()">游客</a> 
 			<a id="jumplogin" href="javascript:void(0)" onclick="jumptologin()">登录</a> 
@@ -46,11 +48,11 @@
 	</div>
 	<br>
 	<div align="center">
-		<img src="" /> <a href="javascript:void(0)" onclick="">首页</a> <a
-			href="javascript:void(0)" onclick="">精彩活动</a> <a
-			href="javascript:void(0)" onclick="">昨日回忆</a> <a
-			href="javascript:void(0)" onclick="">我们的团队</a> <a
-			href="javascript:void(0)" onclick="">加入我们</a>
+		<img src="" /> <a href="javascript:void(0)" onclick="jumptohomepage()">首页</a>
+		 <a href="javascript:void(0)" onclick="">精彩活动</a> 
+		 <a	href="javascript:void(0)" onclick="">昨日回忆</a>
+		 <a href="javascript:void(0)" onclick="">我们的团队</a> 
+		 <a	href="javascript:void(0)" onclick="">加入我们</a>
 	</div>
 	<div align="center">
 		<table boder="1">

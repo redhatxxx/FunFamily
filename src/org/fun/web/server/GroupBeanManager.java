@@ -47,7 +47,8 @@ public class GroupBeanManager implements IGroupBeanManager {
 	@Override
 	public List<GroupBaseBean> getGroupList(List conditions) {
 		// TODO Auto-generated method stub
-		return null;
+		List grouplist = groupdao.getGroupList(conditions);
+		return grouplist;
 	}
 
 }

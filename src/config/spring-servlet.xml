@@ -46,4 +46,13 @@
 		<property name="prefix" value="/"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
+	<!-- json数据支持 
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+	 <property name="messageConverters">
+	  <list>
+	   <bean
+	    class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+	  </list>
+	 </property>
+	</bean>-->
  </beans>  

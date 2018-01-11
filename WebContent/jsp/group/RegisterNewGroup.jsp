@@ -8,7 +8,10 @@
 <style type="text/css">
 	@import url("<c:url value="/css/basestyle.css"/>");
 </style>
-<script type="text/javascript" src="<c:url value="/jsfiles/jquery-3.1.1.min.js"/>"></script>
+	<script type="text/javascript" src="<c:url value="/jsfiles/jquery-3.1.1.min.js"/>"></script>
+	<script type="text/javascript" src="<c:url value="/jsfiles/cookieoperation.js"/>"></script>
+	<script type="text/javascript" src="<c:url value="/jsfiles/userfun.js"/>"></script>
+	<script type="text/javascript" src="<c:url value="/jsfiles/commonfun.js"/>"></script>
 <title>创建新团队</title>
 </head>
 <body>

@@ -63,7 +63,9 @@ public class UserController{
 			httpSession.setAttribute("flag", "1");
 			httpSession.setAttribute("user_id", user_id);
 			httpSession.setAttribute("showname", showname);
-			
+			if(username.equals("redhat")){
+				httpSession.setAttribute("managerflag", "1");
+			}
 			return "redirect:/index";
 		}
 

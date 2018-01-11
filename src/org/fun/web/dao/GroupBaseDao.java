@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.fun.web.dao.bean.ActivityBaseBean;
 import org.fun.web.dao.bean.GroupBaseBean;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 
 public class GroupBaseDao implements IGroupBaseDao {
@@ -41,7 +42,13 @@ public class GroupBaseDao implements IGroupBaseDao {
 	@Override
 	public List<GroupBaseBean> getGroupList(List conditions) {
 		// TODO Auto-generated method stub
-		return null;
+		String hql = " from GroupBaseBean ";
+		if(conditions!=null){
+			
+		}
+		Query query = this.sessionfactory.getCurrentSession().createQuery(hql);
+		
+		return query.list();
 	}
 
 }

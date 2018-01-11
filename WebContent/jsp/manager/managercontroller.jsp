@@ -8,11 +8,11 @@
 <style type="text/css">
 	@import url("<c:url value="/css/basestyle.css"/>");
 </style>
+	<title>首页</title>
 	<script type="text/javascript" src="<c:url value="/jsfiles/jquery-3.1.1.min.js"/>"></script>
 	<script type="text/javascript" src="<c:url value="/jsfiles/cookieoperation.js"/>"></script>
 	<script type="text/javascript" src="<c:url value="/jsfiles/userfun.js"/>"></script>
 	<script type="text/javascript" src="<c:url value="/jsfiles/commonfun.js"/>"></script>
-<title>团队列表</title>
 </head>
 <body>
 	<div align="right">
@@ -29,7 +29,59 @@
 				<a id="manager"	href="javascript:void(0)" onclick="jumpmanager()">管理员入口</a>
 			</c:if>
 		</c:if>
-		
 	</div>
+	<ul>
+		<li><a href="javascript:void(0)" onclick="reloadbyparam(1)">团队列表</a></li>
+			<c:if test="${showgroup==1 }">
+				<table>
+					<tr>
+						<th>团队名称</th>
+						<th>领队</th>
+						<th>创建时间</th>
+					</tr>
+					<c:forEach items="${grouplist }" var="group">
+						<tr>
+							<td>${group.group_name }</td>
+							<td>${group.group_leader.user_name }</td>
+							<td>${group.group_create_time }</td>
+						</tr>
+					</c:forEach>
+				</table>
+			</c:if>
+		<li><a href="javascript:void(0)" onclick="reloadbyparam(2)">用户列表</a></li>
+			<c:if test="${showuser==1 }">
+				<table>
+					<tr>
+						<th>用户名</th>
+						<th>邮箱</th>
+						<th>创建时间</th>
+					</tr>
+					<c:forEach items="${userlist }" var="user">
+						<tr>
+							<td>${user.user_name }</td>
+							<td>${user.user_email }</td>
+							<td>${user.user_regist_time }</td>
+						</tr>
+					</c:forEach>
+				</table>
+			</c:if>
+		<li><a href="javascript:void(0)" onclick="reloadbyparam(3)">活动列表</a></li>
+			<c:if test="${showactiv==1 }">
+				<table>
+					<tr>
+						<th>活动名称</th>
+						<th>活动时间</th>
+						<th>价格</th>
+					</tr>
+					<c:forEach items="${activlist }" var="activ">
+						<tr>
+							<td>${activ.activity_name }</td>
+							<td>${activ.activity_time }</td>
+							<td>${activ.activity_markPrice }</td>
+						</tr>
+					</c:forEach>
+				</table>
+			</c:if>
+	</ul>
 </body>
 </html>
